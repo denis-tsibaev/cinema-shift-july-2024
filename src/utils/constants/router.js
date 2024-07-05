@@ -1,3 +1,6 @@
 export const ROUTES = {
-  ROOT: '/'
+  HOME: '/',
+  PROFILE: '/profile',
+  MOVIE: '/film/:filmId',
+  SHEDULE: '/film/:filmId/schedule'
 };

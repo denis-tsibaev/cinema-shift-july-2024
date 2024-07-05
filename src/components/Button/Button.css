@@ -1,0 +1,48 @@
+.afisha-button {
+  outline: none;
+  border: none;
+  width: 150px;
+  min-height: 30px;
+  color: #fff;
+  border-radius: 32px;
+  background-color: #9534d2;
+  padding: 8px 16px;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    background-color: #9a08f5;
+  }
+}
+
+.schedule-button {
+  outline: none;
+  border: none;
+  width: 100px;
+  height: 30px;
+  color: #fff;
+  border-radius: 32px;
+  background-color: #9534d2;
+  margin-right: 5px;
+  padding: 8px 16px;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    background-color: #9a08f5;
+  }
+}
+
+.hall-name-button {
+  outline: none;
+  border: none;
+  width: 250px;
+  height: 30px;
+  color: #fff;
+  border-radius: 30px;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+  }
+}
