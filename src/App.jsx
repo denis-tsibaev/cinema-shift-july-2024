@@ -1,16 +1,9 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { store } from './utils/redux/store';
 import { Provider } from 'react-redux';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { routePage } from './RoutePage';
+import { store } from './utils/redux/store';
 
-import { RootPage } from './pages/root';
-import { ROUTES } from './utils/constants/router';
-
-const router = createBrowserRouter([
-  {
-    path: ROUTES.ROOT,
-    element: <RootPage />
-  }
-]);
+const router = createBrowserRouter(routePage);
 
 export const App = () => (
   <Provider store={store}>
