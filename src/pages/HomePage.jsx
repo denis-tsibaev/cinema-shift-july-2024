@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
-import { Container } from '../components/Container';
-import { Header } from '../components/Header';
 import { Button } from '../components/Button';
 import { BASE_URL, getMoviesToday } from '../utils/api/serviceApi';
 
@@ -22,8 +20,7 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <Container>
-      <Header />
+    <>
       {movies && (
         <>
           <h1 className='afisha-title'>Афиша</h1>
@@ -39,6 +36,6 @@ export const HomePage = () => {
         </>
       )}
       <ToastContainer />
-    </Container>
+    </>
   );
 };
