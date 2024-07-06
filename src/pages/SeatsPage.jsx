@@ -1,21 +1,14 @@
 /* eslint-disable react/prop-types */
-// import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { Modal } from '../components/Modal';
 
-export const SeatsPage = ({
-  hallName,
-  places,
-  time,
-  tickets,
-  setTickets,
-  totalPrice,
-  setTotalPrice
-}) => {
+export const SeatsPage = ({ hallName, places, time }) => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [tickets, setTickets] = useState([]);
 
   const handleChangeInput = (e) => {
     if (e.target.checked) {
@@ -37,7 +30,7 @@ export const SeatsPage = ({
     // console.log(e.target.value);
   };
 
-  console.log(tickets);
+  //   console.log(tickets);
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -85,14 +78,14 @@ export const SeatsPage = ({
           )}
         </ol>
       </div>
-      <p>Итого: {totalPrice}</p>
+      <p className='total-price'>Итого: {totalPrice} &#8381;</p>
       <Button onClick={toggleModal} disabled={totalPrice === 0}>
         Подтвердить
       </Button>
       {showModal && (
         <Modal>
           <h2>Вы выбрали места</h2>
-          <p>Сумма к оплате: {totalPrice}</p>
+          <p>Сумма к оплате: {totalPrice} &#8381;</p>
           <p>Перейти к оплате билетов на выбранный сеанс?</p>
           <br />
           <br />

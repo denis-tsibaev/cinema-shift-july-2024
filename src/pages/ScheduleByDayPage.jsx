@@ -1,25 +1,13 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { useState } from 'react';
 import { Button } from '../components/Button';
 import { SeatsPage } from './SeatsPage';
 
-export const ScheduleByDayPage = ({
-  schedules,
-  index,
-  hallName,
-  setHallName,
-  places,
-  setPlaces,
-  time,
-  setTime,
-  tickets,
-  setTickets,
-  totalPrice,
-  setTotalPrice
-}) => {
-  //   console.log('hallName', hallName);
-  //   console.log('places', places);
-
+// eslint-disable-next-line react/prop-types
+export const ScheduleByDayPage = ({ schedules, index }) => {
+  const [hallName, setHallName] = useState('Red');
+  const [places, setPlaces] = useState([]);
+  const [time, setTime] = useState(null);
   return (
     <>
       <div className='schedule-container'>
@@ -30,7 +18,7 @@ export const ScheduleByDayPage = ({
                 className='hall-name-button'
                 style={{ backgroundColor: hall.name }}
                 onClick={() => {
-                  console.log('places-array: ', schedules[index].seances[i].hall.places);
+                  //   console.log('places-array: ', schedules[index].seances[i].hall.name);
                   setHallName(schedules[index]?.seances[i]?.hall?.name);
                   setPlaces(schedules[index].seances[i]?.hall.places);
                   setTime(time);
@@ -58,15 +46,7 @@ export const ScheduleByDayPage = ({
           </p>
         </div>
       </div>
-      <SeatsPage
-        hallName={hallName}
-        places={places}
-        time={time}
-        tickets={tickets}
-        setTickets={setTickets}
-        totalPrice={totalPrice}
-        setTotalPrice={setTotalPrice}
-      />
+      <SeatsPage hallName={hallName} places={places} time={time} />
     </>
   );
 };

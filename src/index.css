@@ -4,7 +4,6 @@ body {
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  //   background-size: contain;
   background-image: url('https://static.wixstatic.com/media/d91663_ac6a447f355948cf86c611b8bc917797~mv2_d_1980_1238_s_2.jpg/v1/fill/w_1920,h_1200,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/d91663_ac6a447f355948cf86c611b8bc917797~mv2_d_1980_1238_s_2.jpg');
 }
 
@@ -21,7 +20,7 @@ ol {
 
 a {
   text-decoration: none;
-  // color: #fff;
+  /* color: #fff; */
 }
 
 img {
@@ -108,19 +107,19 @@ img {
   margin-bottom: 8px;
 }
 
-// .tickets {
-//   background-image: linear-gradient(
-//       rgba(47, 48, 58, 0.4),
-//       rgba(47, 48, 58, 0.4),
-//       url('./assets/images/tickets.jpg')
-//   );
+/* .tickets {
+   background-image: linear-gradient(
+       rgba(47, 48, 58, 0.4),
+       rgba(47, 48, 58, 0.4),
+       url('./assets/images/tickets.jpg')
+   );
 
-//   background-image: url('./assets/images/tickets.jpg');
-//   background-size: cover;
-//   background-position: center;
-//   height: 1000px;
-//   opacity: 0.5;
-// }
+   background-image: url('./assets/images/tickets.jpg');
+   background-size: cover;
+   background-position: center;
+   height: 1000px;
+   opacity: 0.5;
+ } */
 
 .schedule-container {
   display: flex;
@@ -191,7 +190,7 @@ img {
       font-size: 14px;
       position: absolute;
       top: -20px;
-      right: 7px;
+      right: -475px;
     }
 
     .label-checkbox {
@@ -233,7 +232,7 @@ img {
       font-size: 14px;
       position: absolute;
       top: -20px;
-      right: 2px;
+      right: -475px;
     }
 
     .label-checkbox {
@@ -275,13 +274,19 @@ img {
       font-size: 12px;
       position: absolute;
       top: -20px;
-      right: 2px;
+      right: -475px;
     }
 
     .label-checkbox {
       font-size: 14px;
     }
   }
+}
+
+.total-price {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 50px;
 }
 
 .form {
