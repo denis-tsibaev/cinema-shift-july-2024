@@ -24,7 +24,7 @@ export const MoviePage = () => {
       <div className='moviePage'>
         <img src={`${BASE_URL}${movie.img}`} alt={movie.name} />
         <h2 className='moviePage__title'>{movie.name}</h2>
-        <p>{movie.description}</p>
+        <p className='movie-description-movie-page'>{movie.description}</p>
         <p>
           Кинопоиск: <b>{movie.userRatings?.kinopoisk}</b>
         </p>

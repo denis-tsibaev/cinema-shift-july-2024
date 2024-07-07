@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import './Button.scss';
+import './Button.css';
 
 export const Button = ({
   type = 'button',
