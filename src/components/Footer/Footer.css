@@ -1,0 +1,8 @@
+.footer {
+  border-top: 2px dashed #9534d2;
+  padding: 15px 0;
+
+  .footer-text {
+    color: #9534d2;
+  }
+}
