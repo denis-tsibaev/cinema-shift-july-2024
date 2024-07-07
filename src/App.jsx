@@ -2,6 +2,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Container } from './components/Container';
 import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
 import { MoviePage } from './pages/MoviePage';
 import { NotFoundPage } from './pages/NotFoundPage';
@@ -23,6 +24,7 @@ export const App = () => (
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </Provider>
+      <Footer />
     </Container>
   </BrowserRouter>
 );

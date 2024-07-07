@@ -38,17 +38,6 @@ img {
   height: auto;
 }
 
-.footer {
-  border-top: 1px solid #9534d2;
-  margin-top: 20px;
-
-  .footer-text {
-    color: gray;
-    margin: 0;
-    padding: 15px 0;
-  }
-}
-
 .afisha-title {
   text-align-last: left;
   margin-left: 48px;
