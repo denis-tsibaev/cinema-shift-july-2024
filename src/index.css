@@ -11,6 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
 ul,
 ol {
   list-style: none;
@@ -20,7 +30,6 @@ ol {
 
 a {
   text-decoration: none;
-  /* color: #fff; */
 }
 
 img {
@@ -55,16 +64,16 @@ img {
 
 .afisha-movie-name {
   margin-top: 8px;
-  margin-bottom: 0;
+  margin-bottom: 8px;
 }
 
 .movieItem {
+  background-color: #fff;
   width: 300px;
-  height: 560px;
+  /* height: 560px; */
   padding: 8px;
   margin-bottom: 40px;
   position: relative;
-
   .movie-image-container {
     height: 400px;
     overflow: hidden;
@@ -81,35 +90,59 @@ img {
       transform: scale(1.01);
     }
   }
+}
 
-  h3 {
+.movie-info-container-home-page {
+  height: 160px;
+  .movie-description-home-page {
     margin: 0;
-    margin-bottom: 16px;
+    font-size: 14px;
   }
 }
 
-.movie-description-home-page {
-  margin: 0;
-  font-size: 14px;
-}
-
-.moviePage {
-  padding: 50px 15px;
+.movie-page {
+  padding: 50px 0;
   img {
     width: 500px;
   }
+}
+
+.container-description-movie-page {
+  background-color: #fff;
+  padding: 15px;
+
+  .movie-page-title {
+    font-size: 32px;
+    margin-top: 16px;
+  }
+
+  /* .original-movie-name {
+  } */
+
+  .release-date {
+    margin-bottom: 30px;
+  }
+
+  .movie-details-span {
+    font-size: 14px;
+    color: lightslategrey;
+  }
+
+  .rating-star {
+    width: 30px;
+    display: inline-block;
+  }
 
   .movie-description-movie-page {
-    margin: 0;
+    margin-bottom: 16px;
     width: 100%;
     font-size: 20px;
     text-align: left;
   }
 
-  .moviePage__title {
-    font-size: 32px;
-    margin-top: 16px;
-    margin-bottom: 30px;
+  .rating-description-movie-page {
+    font-size: 18px;
+    margin-bottom: 16px;
   }
 }
 
@@ -136,6 +169,19 @@ img {
    opacity: 0.5;
  } */
 
+.schedule-title {
+  margin-bottom: 16px;
+}
+
+.schedule-date {
+  margin: 16px;
+}
+
+.schedule-hall-to-choose {
+  margin-bottom: 16px;
+  font-size: 22px;
+}
+
 .schedule-container {
   display: flex;
   justify-content: center;
@@ -157,15 +203,25 @@ img {
 }
 
 .screen {
-  margin: 0;
-  padding-bottom: 20px;
-  font-size: 18px;
-  border-bottom: #9534d2 5px solid;
+  padding-bottom: 8px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 30px;
+  color: #9534d2;
+  border-bottom: #9534d2 6px solid;
 }
 
 .seats-container {
   min-height: 400px;
-  position: relative;
+  /* position: relative; */
+
+  .seats-title {
+    margin: 16px;
+  }
+
+  .hall-name-date {
+    margin-bottom: 16px;
+  }
 
   .Red {
     display: flex;
@@ -180,7 +236,7 @@ img {
 
     .checkbox-item-price {
       position: absolute;
-      top: 0;
+      top: 20px;
       left: 16px;
       font-size: 14px;
     }
@@ -198,14 +254,14 @@ img {
     .checkbox-item-row {
       font-size: 14px;
       position: absolute;
-      top: -20px;
+      top: -7px;
       left: 7px;
     }
     .checkbox-item-seat {
       font-size: 14px;
       position: absolute;
-      top: -20px;
-      right: -475px;
+      top: -7px;
+      right: 12px;
     }
 
     .label-checkbox {
@@ -226,7 +282,7 @@ img {
 
     .checkbox-item-price {
       position: absolute;
-      top: 5px;
+      top: 20px;
       left: 17px;
       font-size: 14px;
     }
@@ -240,14 +296,14 @@ img {
     .checkbox-item-row {
       font-size: 14px;
       position: absolute;
-      top: -20px;
-      left: 7px;
+      top: -7px;
+      left: 2px;
     }
     .checkbox-item-seat {
       font-size: 14px;
       position: absolute;
-      top: -20px;
-      right: -475px;
+      top: -7px;
+      right: 7px;
     }
 
     .label-checkbox {
@@ -268,7 +324,7 @@ img {
 
     .checkbox-item-price {
       position: absolute;
-      top: 0;
+      top: 16px;
       left: 14px;
       font-size: 14px;
     }
@@ -282,14 +338,14 @@ img {
     .checkbox-item-row {
       font-size: 12px;
       position: absolute;
-      top: -20px;
-      left: 7px;
+      top: -5px;
+      left: 5px;
     }
     .checkbox-item-seat {
       font-size: 12px;
       position: absolute;
-      top: -20px;
-      right: -475px;
+      top: -5px;
+      right: 3px;
     }
 
     .label-checkbox {

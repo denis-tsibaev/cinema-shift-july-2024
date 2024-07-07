@@ -22,15 +22,15 @@ export const SchedulePage = () => {
   }, [filmId]);
 
   return (
-    <div className='moviePage'>
-      <h1>Расписание</h1>
+    <div className='movie-page'>
+      <h1 className='schedule-title'>Расписание</h1>
       {schedules.map(({ date }, index) => (
         <Button className='schedule-button' onClick={() => setIndex(index)} key={index}>
           {date}
         </Button>
       ))}
-      <h2>Выбрана дата: {schedules[index]?.date}</h2>
-      <h3>Выберите время и зал</h3>
+      <h2 className='schedule-date'>Выбрана дата: {schedules[index]?.date}</h2>
+      <h3 className='schedule-hall-to-choose'>Выберите время и зал</h3>
 
       <ScheduleByDayPage schedules={schedules} index={index} />
 

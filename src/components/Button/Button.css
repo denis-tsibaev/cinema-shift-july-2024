@@ -30,7 +30,8 @@
   &:hover,
   &:focus {
     cursor: pointer;
-    background-color: #9a08f5;
+    background-color: #fff;
+    color: #9534d2;
   }
 }
 
