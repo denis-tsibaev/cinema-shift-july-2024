@@ -12,6 +12,8 @@ export const HomePage = () => {
     getMoviesToday()
       .then(({ data }) => {
         setMovies(data.films);
+        console.log(data.films);
+        console.log(data.films[0].genres);
       })
       .catch((error) => {
         console.log(error.message);
@@ -27,9 +29,20 @@ export const HomePage = () => {
           <ul className='movieList'>
             {movies.map((film) => (
               <li key={film.id} className='movieItem'>
-                <img src={`${BASE_URL}${film.img}`} alt={film.name} />
-                <h3 className='afisha-movie-name'>{film.name}</h3>
-                <Button onClick={() => navigate(`/film/${film.id}`)}>Подробнее</Button>
+                <div className='movie-image-container'>
+                  <img src={`${BASE_URL}${film.img}`} alt={film.name} />
+                </div>
+                <h2 className='afisha-movie-name'>{film.name}</h2>
+                <p className='movie-description-home-page'>{film.country.name}</p>
+                <p className='movie-description-home-page'>
+                  {film.genres.map((genre) => genre).join(', ')}
+                </p>
+                <Button
+                  onClick={() => navigate(`/film/${film.id}`)}
+                  style={{ position: 'absolute', bottom: '0', left: '75px' }}
+                >
+                  Подробнее
+                </Button>
               </li>
             ))}
           </ul>

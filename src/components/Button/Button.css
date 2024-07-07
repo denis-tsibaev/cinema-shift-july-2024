@@ -12,6 +12,7 @@
   &:focus {
     cursor: pointer;
     background-color: #9a08f5;
+    zoom: 1.05;
   }
 }
 
