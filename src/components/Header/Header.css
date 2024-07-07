@@ -2,13 +2,22 @@
   height: 80px;
   display: flex;
   align-items: center;
-  /* color: #9534d2; */
-
-  border-bottom: 1px solid #9534d2;
+  border-bottom: 2px dashed #9534d2;
+  img {
+    display: inline-block;
+    margin-right: 8px;
+  }
 }
 
-.nav__link {
+.nav-link {
   font-size: 24px;
   font-weight: 500;
   margin-left: 48px;
+  color: #000;
+
+  &&:active,
+  &&:hover,
+  &&:focus {
+    color: #9534d2;
+  }
 }
