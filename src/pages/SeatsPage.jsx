@@ -39,12 +39,12 @@ export const SeatsPage = ({ hallName, places, time }) => {
   return (
     <>
       <div className='seats-container'>
-        <h1>Выбор места</h1>
-        <h2>
+        <h1 className='seats-title'>Выбор места</h1>
+        <h2 className='hall-name-date'>
           {hallName === 'Red' ? 'Красный зал' : hallName === 'Green' ? 'Зеленый зал' : 'Синий зал'},
           сеанс на: {time}
         </h2>
-        <p className='screen'>Экран</p>
+        <p className='screen'>ЭКРАН</p>
         <br />
         <br />
         <ol className={hallName}>
@@ -84,18 +84,15 @@ export const SeatsPage = ({ hallName, places, time }) => {
       </Button>
       {showModal && (
         <Modal>
-          <h2>Вы выбрали места</h2>
-          <p>Сумма к оплате: {totalPrice} &#8381;</p>
-          <p>Перейти к оплате билетов на выбранный сеанс?</p>
+          <h2 className='modal-title'>Вы выбрали места</h2>
+          <p className='modal-paragraph'>Сумма к оплате: {totalPrice} &#8381;</p>
+          <p className='modal-paragraph'>Перейти к оплате билетов на выбранный сеанс?</p>
           <br />
           <br />
-          <br />
-
-          <Button style={{ marginRight: '5px' }} onClick={() => navigate('/profile')}>
-            Перейти
+          <Button onClick={toggleModal} style={{ marginRight: '8px' }}>
+            Отмена
           </Button>
-
-          <Button onClick={toggleModal}>Отмена</Button>
+          <Button onClick={() => navigate('/profile')}>Перейти</Button>
         </Modal>
       )}
     </>

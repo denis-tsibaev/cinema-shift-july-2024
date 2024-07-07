@@ -1,7 +1,7 @@
 .Container {
-  max-width: 990px;
+  max-width: 1050px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 30px;
   text-align: -webkit-center;
   background-color: rgba(211, 211, 211, 0.6);
   min-height: 100vh;
