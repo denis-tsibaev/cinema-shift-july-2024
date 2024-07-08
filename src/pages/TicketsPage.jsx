@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { getTickets } from '../utils/api/serviceApi';
 
 /* eslint-disable react/prop-types */
-export const Tickets = ({ filmId, person, card, tickets, day, time }) => {
+export const TicketsPage = ({ filmId = '1', person, card, tickets, day, time }) => {
   useEffect(() => {
     getTickets({
       filmId,
@@ -17,13 +17,21 @@ export const Tickets = ({ filmId, person, card, tickets, day, time }) => {
     })
       .then(() => {
         toast.success('Билеты куплены');
-        console.log;
+        // console.log;
       })
       .catch((error) => {
         console.log(error);
         toast.error('Произошла ошибка при покупке билетов');
       });
-  }, [filmId, person, card, tickets, day, time]);
+  }, [card, day, filmId, person, tickets, time]);
+
+  const ticketsArr = tickets.pop();
+
+  console.log('TicketsPage-peson: ', person);
+  console.log('TicketsPage-card: ', card);
+  console.log('TicketsPage-day: ', day);
+  console.log('TicketsPage-day: ', time);
+  console.log('TicketsPage-tickets: ', ticketsArr);
 
   return (
     <>

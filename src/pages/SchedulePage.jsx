@@ -8,18 +8,21 @@ import { Button } from '../components/Button';
 import { getSchedule } from '../utils/api/serviceApi';
 import { ScheduleByDayPage } from './ScheduleByDayPage';
 
-export const SchedulePage = ({ day, setDay, time, setTime, tickets, setTickets }) => {
-  const { filmId } = useParams();
+export const SchedulePage = ({ setFilmId, setDay, time, setTime, tickets, setTickets }) => {
+  const useParamsfilmId = useParams();
+  setFilmId(useParamsfilmId);
+  console.log('filmId: ', useParamsfilmId);
+
   const [schedules, setSchedules] = useState([]);
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    getSchedule(filmId).then(({ data }) => {
+    getSchedule(useParamsfilmId).then(({ data }) => {
       setSchedules(data?.schedules);
       //   console.dir(data.schedules);
       //   console.log('data.schedules', data.schedules);
     });
-  }, [filmId]);
+  }, [useParamsfilmId]);
 
   return (
     <div className='movie-page'>

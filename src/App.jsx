@@ -7,9 +7,10 @@ import { Header } from './components/Header';
 import { HomePage } from './pages/HomePage';
 import { MoviePage } from './pages/MoviePage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { PaymentPage } from './pages/PaymentPage';
 import { ProfilePage } from './pages/ProfilePage';
 import { SchedulePage } from './pages/SchedulePage';
-import { Tickets } from './pages/Tickets';
+import { TicketsPage } from './pages/TicketsPage';
 import { ROUTES } from './utils/constants/router';
 import { store } from './utils/redux/store';
 
@@ -20,6 +21,9 @@ function App() {
   const [day, setDay] = useState(null);
   const [time, setTime] = useState(null);
   const [tickets, setTickets] = useState([]);
+  const [person, setPerson] = useState({});
+  const [card, setCard] = useState({});
+  const [filmId, setFilmId] = useState('1');
 
   return (
     <BrowserRouter>
@@ -29,19 +33,22 @@ function App() {
           <Routes>
             <Route path={ROUTES.HOME} element={<HomePage />} />
             <Route path={ROUTES.MOVIE} element={<MoviePage />} />
-            <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
+            <Route path={ROUTES.PROFILE} element={<ProfilePage setPerson={setPerson} />} />
             <Route
               path={ROUTES.TICKETS}
               element={
-                <Tickets
+                <TicketsPage
                   day={day}
-                  setDay={setDay}
                   time={time}
                   setTime={setTime}
                   tickets={tickets}
+                  person={person}
+                  card={card}
+                  filmId={filmId}
                 />
               }
             />
+            <Route path={ROUTES.PAYMENT} element={<PaymentPage setCard={setCard} />} />
             <Route
               path={ROUTES.SHEDULE}
               element={
@@ -52,6 +59,8 @@ function App() {
                   setTime={setTime}
                   tickets={tickets}
                   setTickets={setTickets}
+                  filmId={filmId}
+                  setFilmId={setFilmId}
                 />
               }
             />

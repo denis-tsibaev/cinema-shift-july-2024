@@ -1,9 +1,23 @@
+/* eslint-disable react/prop-types */
+import { useNavigate } from 'react-router-dom';
+import { Button } from '../Button';
 import '../CreditCard/CreditCard.css';
 
-export const Person = () => {
+export const Person = ({ setPerson }) => {
+  const navigate = useNavigate();
+
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('submit');
+    const person = {
+      firstname: e.target.name.value,
+      lastname: e.target.surname.value,
+      middlename: e.target.patronymic.value,
+      phone: e.target.phone.value,
+      email: e.target.email.value
+    };
+    setPerson({ ...person });
+    // console.log('PersonPage-person: ', person);
+    navigate('/payment');
   };
 
   return (
@@ -11,25 +25,26 @@ export const Person = () => {
       <div className='credit-card-form-container'>
         <label>
           Имя*
-          <input type='text' placeholder='Александр' />
+          <input type='text' name='name' placeholder='Александр' required />
         </label>
         <label>
           Фамилия*
-          <input type='text' placeholder='Пушкин' />
+          <input type='text' name='surname' placeholder='Пушкин' required />
         </label>
         <label>
           Отчество
-          <input type='text' placeholder='Сергеевич' />
+          <input type='text' name='patronymic' placeholder='Сергеевич' />
         </label>
         <label>
           Телефон*
-          <input type='phone' placeholder='+7 (999) 999-99-99' />
+          <input type='phone' name='phone' placeholder='+7 (999) 999-99-99' required />
         </label>
         <label>
           email*
-          <input type='phone' placeholder='mail@example.ru' />
+          <input type='phone' name='email' placeholder='mail@example.ru' required />
         </label>
       </div>
+      <Button type='submit'>Продолжить</Button>
     </form>
   );
 };
