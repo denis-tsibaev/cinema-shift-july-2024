@@ -388,3 +388,17 @@ button:disabled {
   margin-bottom: 16px;
   font-size: 24px;
 }
+
+.tickets-page-title {
+  font-size: 150px;
+  padding: 150px 0;
+}
+
+.tickets-page-container {
+  padding: 150px;
+
+  .tickets-page-paragraph {
+    font-size: 24px;
+    margin: 16px;
+  }
+}

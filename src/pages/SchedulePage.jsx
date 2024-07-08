@@ -9,20 +9,17 @@ import { getSchedule } from '../utils/api/serviceApi';
 import { ScheduleByDayPage } from './ScheduleByDayPage';
 
 export const SchedulePage = ({ setFilmId, setDay, time, setTime, tickets, setTickets }) => {
-  const useParamsfilmId = useParams();
-  setFilmId(useParamsfilmId);
-  console.log('filmId: ', useParamsfilmId);
+  const { filmId } = useParams();
+  setFilmId(filmId);
 
   const [schedules, setSchedules] = useState([]);
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    getSchedule(useParamsfilmId).then(({ data }) => {
+    getSchedule(filmId).then(({ data }) => {
       setSchedules(data?.schedules);
-      //   console.dir(data.schedules);
-      //   console.log('data.schedules', data.schedules);
     });
-  }, [useParamsfilmId]);
+  }, [filmId]);
 
   return (
     <div className='movie-page'>

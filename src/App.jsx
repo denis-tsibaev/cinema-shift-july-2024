@@ -23,7 +23,7 @@ function App() {
   const [tickets, setTickets] = useState([]);
   const [person, setPerson] = useState({});
   const [card, setCard] = useState({});
-  const [filmId, setFilmId] = useState('1');
+  const [filmId, setFilmId] = useState(null);
 
   return (
     <BrowserRouter>

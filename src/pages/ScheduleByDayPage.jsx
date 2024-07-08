@@ -7,7 +7,7 @@ import { SeatsPage } from './SeatsPage';
 export const ScheduleByDayPage = ({ schedules, index, time, setTime, tickets, setTickets }) => {
   const [hallName, setHallName] = useState('Red');
   const [places, setPlaces] = useState([]);
-  //   const [time, setTime] = useState(null);
+
   return (
     <>
       <div className='schedule-container'>
