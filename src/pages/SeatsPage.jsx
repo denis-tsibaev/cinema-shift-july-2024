@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { Modal } from '../components/Modal';
 
-export const SeatsPage = ({ hallName, places, time }) => {
+export const SeatsPage = ({ hallName, places, time, tickets, setTickets }) => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [tickets, setTickets] = useState([]);
+  //   const [tickets, setTickets] = useState([]);
 
   const handleChangeInput = (e) => {
     if (e.target.checked) {

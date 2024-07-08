@@ -4,10 +4,10 @@ import { Button } from '../components/Button';
 import { SeatsPage } from './SeatsPage';
 
 // eslint-disable-next-line react/prop-types
-export const ScheduleByDayPage = ({ schedules, index }) => {
+export const ScheduleByDayPage = ({ schedules, index, time, setTime, tickets, setTickets }) => {
   const [hallName, setHallName] = useState('Red');
   const [places, setPlaces] = useState([]);
-  const [time, setTime] = useState(null);
+
   return (
     <>
       <div className='schedule-container'>
@@ -46,7 +46,13 @@ export const ScheduleByDayPage = ({ schedules, index }) => {
           </p>
         </div>
       </div>
-      <SeatsPage hallName={hallName} places={places} time={time} />
+      <SeatsPage
+        hallName={hallName}
+        places={places}
+        time={time}
+        tickets={tickets}
+        setTickets={setTickets}
+      />
     </>
   );
 };
