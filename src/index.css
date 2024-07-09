@@ -394,11 +394,31 @@ button:disabled {
   padding: 150px 0;
 }
 
-.tickets-page-container {
+.tickets-page {
   padding: 150px;
 
-  .tickets-page-paragraph {
-    font-size: 24px;
-    margin: 16px;
+  .subtitle-and-image-container {
+    font-size: 36px;
+    margin-bottom: 48px;
+
+    .tickets-page-subtitle {
+      margin-top: 48px;
+    }
   }
+}
+
+.paragraph-container {
+  text-align: left;
+  margin-bottom: 75px;
+
+  .paragraph {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+}
+
+.go-to-profile-link {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 50px;
 }

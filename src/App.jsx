@@ -24,6 +24,7 @@ function App() {
   const [person, setPerson] = useState({});
   const [card, setCard] = useState({});
   const [filmId, setFilmId] = useState(null);
+  const [filmName, setFilmName] = useState(null);
 
   return (
     <BrowserRouter>
@@ -32,7 +33,7 @@ function App() {
         <Provider store={store}>
           <Routes>
             <Route path={ROUTES.HOME} element={<HomePage />} />
-            <Route path={ROUTES.MOVIE} element={<MoviePage />} />
+            <Route path={ROUTES.MOVIE} element={<MoviePage setFilmName={setFilmName} />} />
             <Route path={ROUTES.PROFILE} element={<ProfilePage setPerson={setPerson} />} />
             <Route
               path={ROUTES.TICKETS}
@@ -42,9 +43,12 @@ function App() {
                   time={time}
                   setTime={setTime}
                   tickets={tickets}
+                  setTickets={setTickets}
+                  ё
                   person={person}
                   card={card}
                   filmId={filmId}
+                  filmName={filmName}
                 />
               }
             />
