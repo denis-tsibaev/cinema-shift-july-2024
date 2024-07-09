@@ -1,59 +1,39 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import { useState } from 'react';
-import crossIcon from '../assets/images/cross.svg';
-import { Button } from '../components/Button';
-import { Modal } from '../components/Modal';
-import { Person } from '../components/Person';
+// import { useEffect } from 'react';
+// import { getOrders } from '../utils/api/serviceApi';
+export const ProfilePage = ({ person }) => {
+  //   useEffect(() => {
+  //     getOrders().then((data) => {
+  //       console.log(data);
+  //     });
+  //   }, []);
 
-export const ProfilePage = ({ setPerson }) => {
-  const [name, setName] = useState('Username');
-  const [phone, setPhone] = useState('+7 (999) 999-99-99');
-  const [email, setEmail] = useState('mail@example.ru');
+  const storagedPerson = JSON.parse(localStorage.getItem('person'));
 
-  const [showModal, setShowModal] = useState(true);
-  const toggleModal = () => {
-    setShowModal(!showModal);
-  };
+  if (storagedPerson) {
+    person = storagedPerson;
+  }
 
   return (
     <div className='profile-page'>
       <h1 className='profile-title'>Личный кабинет</h1>
       <div className='user-profile-description-container'>
-        {name && (
+        {person.firstname && (
           <p className='user-profile-description'>
-            <b>Привет, {name}!</b>
+            <b>Привет, {person.firstname}!</b>
           </p>
         )}
-        {phone && (
+        {person.phone && (
           <p className='user-profile-description'>
-            <b>Телефон: </b> {phone}!
+            <b>Телефон: </b> {person.phone}!
           </p>
         )}
-        {email && (
+        {person.email && (
           <p className='user-profile-description'>
-            <b>Почта: </b> {email}!
+            <b>Почта: </b> {person.email}!
           </p>
         )}
       </div>
-
-      {showModal && (
-        <Modal>
-          <Person setPerson={setPerson} />
-          <Button
-            onClick={toggleModal}
-            style={{
-              backgroundColor: 'transparent',
-              width: 'fit-content',
-              position: 'absolute',
-              top: '40px',
-              right: '40px'
-            }}
-          >
-            <img src={crossIcon} alt='cross icon to close modal' />
-          </Button>
-        </Modal>
-      )}
     </div>
   );
 };

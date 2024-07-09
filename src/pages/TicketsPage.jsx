@@ -21,11 +21,14 @@ export const TicketsPage = ({ filmId, filmName, person, card, tickets, setTicket
       .then(({ data }) => {
         toast.success('Билеты куплены');
         setdata(data);
-        setTickets([]);
+        //   setTickets([]);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
+        // console.log(error.response.data.reason);
+        setTickets([]);
         toast.error('Произошла ошибка при покупке билетов');
+        toast.error(error.response.data.reason);
       });
   }, []);
 

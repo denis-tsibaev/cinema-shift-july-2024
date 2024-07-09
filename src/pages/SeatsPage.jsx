@@ -92,7 +92,7 @@ export const SeatsPage = ({ hallName, places, time, tickets, setTickets }) => {
           <Button onClick={toggleModal} style={{ marginRight: '8px' }}>
             Отмена
           </Button>
-          <Button onClick={() => navigate('/profile')}>Перейти</Button>
+          <Button onClick={() => navigate('/payment-profile')}>Перейти</Button>
         </Modal>
       )}
     </>

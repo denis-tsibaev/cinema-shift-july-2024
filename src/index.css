@@ -358,8 +358,10 @@ img {
 }
 
 .user-profile-description-container {
+  width: 800px;
   padding: 15px;
-  background-color: #fff;
+  /* background-color: #fff; */
+  text-align-last: left;
 
   .user-profile-description {
     font-size: 18px;
@@ -395,7 +397,7 @@ button:disabled {
 }
 
 .tickets-page {
-  padding: 150px;
+  padding: 50px;
 
   .subtitle-and-image-container {
     font-size: 36px;

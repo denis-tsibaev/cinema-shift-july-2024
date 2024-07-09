@@ -7,7 +7,8 @@ import { Header } from './components/Header';
 import { HomePage } from './pages/HomePage';
 import { MoviePage } from './pages/MoviePage';
 import { NotFoundPage } from './pages/NotFoundPage';
-import { PaymentPage } from './pages/PaymentPage';
+import { PaymentCardPage } from './pages/PaymentCardPage';
+import { PaymentProfilePage } from './pages/PaymentProfilePage';
 import { ProfilePage } from './pages/ProfilePage';
 import { SchedulePage } from './pages/SchedulePage';
 import { TicketsPage } from './pages/TicketsPage';
@@ -34,7 +35,10 @@ function App() {
           <Routes>
             <Route path={ROUTES.HOME} element={<HomePage />} />
             <Route path={ROUTES.MOVIE} element={<MoviePage setFilmName={setFilmName} />} />
-            <Route path={ROUTES.PROFILE} element={<ProfilePage setPerson={setPerson} />} />
+            <Route
+              path={ROUTES.PROFILE}
+              element={<ProfilePage person={person} setPerson={setPerson} />}
+            />
             <Route
               path={ROUTES.TICKETS}
               element={
@@ -52,7 +56,11 @@ function App() {
                 />
               }
             />
-            <Route path={ROUTES.PAYMENT} element={<PaymentPage setCard={setCard} />} />
+            <Route
+              path={ROUTES.PAYMENT_PROFILE}
+              element={<PaymentProfilePage setPerson={setPerson} />}
+            />
+            <Route path={ROUTES.PAYMENT_CARD} element={<PaymentCardPage setCard={setCard} />} />
             <Route
               path={ROUTES.SHEDULE}
               element={

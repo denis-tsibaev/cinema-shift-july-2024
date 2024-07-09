@@ -11,3 +11,5 @@ export const getSchedule = (filmId) => axios.get(`/cinema/film/${filmId}/schedul
 
 export const getTickets = ({ filmId, person, debitCard, seance, tickets }) =>
   axios.post(`/cinema/payment`, { filmId, person, debitCard, seance, tickets });
+
+export const getOrders = () => axios.get('/cinema/orders');

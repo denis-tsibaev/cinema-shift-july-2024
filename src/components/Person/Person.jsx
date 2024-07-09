@@ -16,8 +16,8 @@ export const Person = ({ setPerson }) => {
       email: e.target.email.value
     };
     setPerson({ ...person });
-    // console.log('PersonPage-person: ', person);
-    navigate('/payment');
+    localStorage.setItem('person', JSON.stringify(person));
+    navigate('/payment-card');
   };
 
   return (
