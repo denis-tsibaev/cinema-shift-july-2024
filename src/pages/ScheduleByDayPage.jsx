@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import { Button } from '../components/Button';
 import { SeatsPage } from './SeatsPage';
 
@@ -22,6 +23,7 @@ export const ScheduleByDayPage = ({ schedules, index, time, setTime, tickets, se
                   setHallName(schedules[index]?.seances[i]?.hall?.name);
                   setPlaces(schedules[index].seances[i]?.hall.places);
                   setTime(time);
+                  toast.info(`${hall.name} - ${time}`);
                 }}
               >
                 {time}-
@@ -51,8 +53,10 @@ export const ScheduleByDayPage = ({ schedules, index, time, setTime, tickets, se
         places={places}
         time={time}
         tickets={tickets}
-        setTickets={setTickets}
+        setTic
+        kets={setTickets}
       />
+      <ToastContainer />
     </>
   );
 };

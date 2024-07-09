@@ -46,5 +46,6 @@
   &:hover,
   &:focus {
     cursor: pointer;
+    transform: scaleX(1.02);
   }
 }

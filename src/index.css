@@ -364,7 +364,7 @@ img {
   text-align-last: left;
 
   .user-profile-description {
-    font-size: 18px;
+    font-size: 24px;
     margin-bottom: 8px;
   }
 }
@@ -423,4 +423,40 @@ button:disabled {
   font-size: 24px;
   display: block;
   margin-bottom: 50px;
+}
+
+.box-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  /* margin-bottom: 16px; */
+}
+
+.box {
+  width: 30px;
+  height: 30px;
+  margin-right: 30px;
+  background-color: rgba(255, 0, 0, 0.4);
+
+  animation-name: rotate-box;
+  animation-duration: 2000ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  /* animation-iteration-count: 2; */
+}
+
+.box:hover {
+  animation-play-state: paused;
+}
+
+@keyframes rotate-box {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    background-color: rgba(197, 181, 38, 0.4);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

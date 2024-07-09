@@ -15,10 +15,7 @@ import { TicketsPage } from './pages/TicketsPage';
 import { ROUTES } from './utils/constants/router';
 import { store } from './utils/redux/store';
 
-// eslint-disable-next-line react-hooks/rules-of-hooks
-
 function App() {
-  //   const [filmId, setFilmId] = useState(null);
   const [day, setDay] = useState(null);
   const [time, setTime] = useState(null);
   const [tickets, setTickets] = useState([]);

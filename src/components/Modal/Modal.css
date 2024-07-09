@@ -11,6 +11,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  border-radius: 5%;
   text-align: -webkit-center;
   transform: translate(-50%, -50%);
   min-height: 300px;
