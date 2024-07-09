@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -31,7 +30,7 @@ export const SchedulePage = ({ setFilmId, setDay, time, setTime, tickets, setTic
           onClick={() => {
             setIndex(index);
             setDay(schedules[index]?.date);
-            toast.info(`Выбрана дата: ${schedules[index]?.date}`);
+            toast.info(`Выбрана дата: ${schedules[index]?.date}`, { autoClose: 750 });
           }}
         >
           {date}

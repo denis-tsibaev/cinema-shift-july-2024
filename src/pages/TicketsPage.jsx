@@ -24,6 +24,7 @@ export const TicketsPage = ({ filmId, filmName, person, card, tickets, setTicket
         setdata(data);
         toast.success('Билеты куплены');
         setShowModal(true);
+        setTickets([]);
       })
       .catch((error) => {
         console.log(error);
@@ -41,10 +42,30 @@ export const TicketsPage = ({ filmId, filmName, person, card, tickets, setTicket
   };
 
   //   console.log('tickets', tickets);
+  //   console.log('filmName', filmName);
 
   return (
     <>
       {!data && <h1 className='tickets-page-title'>Tickets</h1>}
+      {data && (
+        <>
+          <h2>Билеты</h2>
+          <div className='movie-ticket'>
+            <p>
+              Дата {data.order.tickets.map((ticket) => ticket.seance.date)[0]} и время{' '}
+              {data.order.tickets.map((ticket) => ticket.seance.time)[0]}
+            </p>
+            <h3>filmName {filmName}</h3>
+            <p>
+              ряд и место{' '}
+              {data.order.tickets.map((ticket) => `${ticket.row}-${ticket.column}`).join(', ')}
+            </p>
+            <p>Оплачен</p>
+            <p>Код билета {data.order.orderNumber}</p>
+            <Button>Вернуть билет</Button>
+          </div>
+        </>
+      )}
 
       {showModal && (
         <Modal>

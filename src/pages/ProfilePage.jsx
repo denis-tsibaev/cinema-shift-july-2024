@@ -15,11 +15,7 @@ export const ProfilePage = ({ person }) => {
   const toggleModal = () => {
     setShowModal(!showModal);
   };
-  const storagedPerson = JSON.parse(localStorage.getItem('person'));
-
-  if (storagedPerson) {
-    person = storagedPerson;
-  }
+  person = JSON.parse(localStorage.getItem('person')) || person;
 
   return (
     <div className='profile-page'>
@@ -27,7 +23,9 @@ export const ProfilePage = ({ person }) => {
       <div className='user-profile-description-container'>
         {person.firstname && (
           <p className='user-profile-description'>
-            <b>Привет, {person.firstname}!</b>
+            <b>
+              Привет, {person.firstname} {person.lastname}!
+            </b>
           </p>
         )}
         {person.phone && (
@@ -46,18 +44,14 @@ export const ProfilePage = ({ person }) => {
       </Button>
       {showModal && (
         <Modal>
-          <div style={{ marginBottom: '50px' }}>
+          <div style={{ marginTop: '50px', marginBottom: '50px' }}>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas sit est quo dicta
             aut, porro possimus corporis ipsam magni accusantium esse asperiores qui consectetur
             mollitia itaque? A doloribus impedit ratione dolorem voluptatem soluta quis rerum error
             eaque quia id sapiente dignissimos, animi, natus eveniet itaque, molestiae distinctio
-            nemo numquam. Accusamus corrupti provident rerum et dolor eum, illo esse ipsam
-            aspernatur praesentium eaque dolorum impedit recusandae suscipit quisquam placeat minus,
-            aliquid nulla veniam neque qui? Repellat amet optio, quos veritatis explicabo facilis
-            perspiciatis adipisci. Perferendis corrupti ab quia! Exercitationem iure sapiente sequi
-            odio, temporibus perspiciatis deserunt, doloribus numquam autem cum reiciendis!
+            nemo numquam. Accusamus corrupti provident rerum et dolor eum
           </div>
-          <Button>ok</Button>
+          <Button onClick={toggleModal}>ok</Button>
           <Button
             onClick={toggleModal}
             style={{

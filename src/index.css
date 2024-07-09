@@ -396,11 +396,19 @@ button:disabled {
   padding: 150px 0;
 }
 
+.movie-ticket {
+  width: 600px;
+  height: 350px;
+  padding: 15px;
+  border-radius: 5%;
+  background-color: beige;
+}
+
 .tickets-page {
   padding: 50px;
 
   .subtitle-and-image-container {
-    font-size: 36px;
+    font-size: 24px;
     margin-bottom: 48px;
 
     .tickets-page-subtitle {
@@ -414,7 +422,7 @@ button:disabled {
   margin-bottom: 75px;
 
   .paragraph {
-    font-size: 24px;
+    font-size: 18px;
     margin-bottom: 16px;
   }
 }

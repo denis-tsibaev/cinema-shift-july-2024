@@ -23,7 +23,7 @@ export const ScheduleByDayPage = ({ schedules, index, time, setTime, tickets, se
                   setHallName(schedules[index]?.seances[i]?.hall?.name);
                   setPlaces(schedules[index].seances[i]?.hall.places);
                   setTime(time);
-                  toast.info(`${hall.name} - ${time}`);
+                  toast.info(`${hall.name} - ${time}`, { autoClose: 750 });
                 }}
               >
                 {time}-
