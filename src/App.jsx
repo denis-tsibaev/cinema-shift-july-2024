@@ -7,7 +7,8 @@ import { Header } from './components/Header';
 import { HomePage } from './pages/HomePage';
 import { MoviePage } from './pages/MoviePage';
 import { NotFoundPage } from './pages/NotFoundPage';
-import { PaymentPage } from './pages/PaymentPage';
+import { PaymentCardPage } from './pages/PaymentCardPage';
+import { PaymentProfilePage } from './pages/PaymentProfilePage';
 import { ProfilePage } from './pages/ProfilePage';
 import { SchedulePage } from './pages/SchedulePage';
 import { TicketsPage } from './pages/TicketsPage';
@@ -24,6 +25,7 @@ function App() {
   const [person, setPerson] = useState({});
   const [card, setCard] = useState({});
   const [filmId, setFilmId] = useState(null);
+  const [filmName, setFilmName] = useState(null);
 
   return (
     <BrowserRouter>
@@ -32,8 +34,11 @@ function App() {
         <Provider store={store}>
           <Routes>
             <Route path={ROUTES.HOME} element={<HomePage />} />
-            <Route path={ROUTES.MOVIE} element={<MoviePage />} />
-            <Route path={ROUTES.PROFILE} element={<ProfilePage setPerson={setPerson} />} />
+            <Route path={ROUTES.MOVIE} element={<MoviePage setFilmName={setFilmName} />} />
+            <Route
+              path={ROUTES.PROFILE}
+              element={<ProfilePage person={person} setPerson={setPerson} />}
+            />
             <Route
               path={ROUTES.TICKETS}
               element={
@@ -42,13 +47,20 @@ function App() {
                   time={time}
                   setTime={setTime}
                   tickets={tickets}
+                  setTickets={setTickets}
+                  ё
                   person={person}
                   card={card}
                   filmId={filmId}
+                  filmName={filmName}
                 />
               }
             />
-            <Route path={ROUTES.PAYMENT} element={<PaymentPage setCard={setCard} />} />
+            <Route
+              path={ROUTES.PAYMENT_PROFILE}
+              element={<PaymentProfilePage setPerson={setPerson} />}
+            />
+            <Route path={ROUTES.PAYMENT_CARD} element={<PaymentCardPage setCard={setCard} />} />
             <Route
               path={ROUTES.SHEDULE}
               element={

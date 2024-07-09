@@ -5,7 +5,8 @@ import goldStarIcon from '../assets/images/gold-star.svg';
 import { Button } from '../components/Button';
 import { BASE_URL, getMovie } from '../utils/api/serviceApi';
 
-export const MoviePage = () => {
+// eslint-disable-next-line react/prop-types
+export const MoviePage = ({ setFilmName }) => {
   const navigate = useNavigate();
   const [movie, setMovie] = useState({});
   const { filmId } = useParams();
@@ -14,6 +15,7 @@ export const MoviePage = () => {
     getMovie(filmId)
       .then(({ data }) => {
         setMovie(data.film);
+        setFilmName(data.film.name);
       })
       .catch((error) => {
         console.log(error.message);

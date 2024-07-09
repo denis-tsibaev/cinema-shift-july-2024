@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { Button } from '../components/Button';
 import { BASE_URL, getMoviesToday } from '../utils/api/serviceApi';
 
+// eslint-disable-next-line react/prop-types
 export const HomePage = () => {
   const navigate = useNavigate();
   const [movies, setMovies] = useState([]);

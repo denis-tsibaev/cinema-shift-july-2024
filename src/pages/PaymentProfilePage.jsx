@@ -1,22 +1,22 @@
 import { useState } from 'react';
 import crossIcon from '../assets/images/cross.svg';
 import { Button } from '../components/Button';
-import { CreditCard } from '../components/CreditCard';
 import { Modal } from '../components/Modal/Modal';
+import { Person } from '../components/Person';
 
 // eslint-disable-next-line react/prop-types
-export const PaymentPage = ({ setCard }) => {
+export const PaymentProfilePage = ({ setPerson }) => {
   const [showModal, setShowModal] = useState(true);
   const toggleModal = () => {
     setShowModal(!showModal);
   };
 
   return (
-    <div style={{ fontSize: '150px', padding: '150px 0' }}>
-      PaymentPage
+    <div style={{ fontSize: '100px', padding: '150px 0' }}>
+      PaymentProfilePage
       {showModal && (
         <Modal>
-          <CreditCard toggleModal={toggleModal} setCard={setCard} />
+          <Person setPerson={setPerson} />
           <Button
             onClick={toggleModal}
             style={{
