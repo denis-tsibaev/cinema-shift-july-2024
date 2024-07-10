@@ -4,7 +4,7 @@ import crossIcon from '../assets/images/cross.svg';
 // import { getOrders } from '../utils/api/serviceApi';
 import { Button } from '../components/Button';
 import { Modal } from '../components/Modal';
-export const ProfilePage = ({ person }) => {
+export const ProfilePage = () => {
   //   useEffect(() => {
   //     getOrders().then((data) => {
   //       console.log(data);
@@ -15,7 +15,7 @@ export const ProfilePage = ({ person }) => {
   const toggleModal = () => {
     setShowModal(!showModal);
   };
-  person = JSON.parse(localStorage.getItem('person')) || person;
+  const person = JSON.parse(localStorage.getItem('person'));
 
   return (
     <div className='profile-page'>

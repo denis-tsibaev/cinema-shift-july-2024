@@ -6,16 +6,17 @@ import { Button } from '../components/Button';
 import { BASE_URL, getMovie } from '../utils/api/serviceApi';
 
 // eslint-disable-next-line react/prop-types
-export const MoviePage = ({ setFilmName }) => {
+export const MoviePage = ({ setFilmId }) => {
   const navigate = useNavigate();
   const [movie, setMovie] = useState({});
   const { filmId } = useParams();
+  filmId && setFilmId(filmId.toString());
 
   useEffect(() => {
     getMovie(filmId)
       .then(({ data }) => {
         setMovie(data.film);
-        setFilmName(data.film.name);
+        localStorage.setItem('filmName', data.film.name);
       })
       .catch((error) => {
         console.log(error.message);

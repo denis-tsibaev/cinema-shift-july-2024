@@ -6,9 +6,7 @@ import { Modal } from '../components/Modal';
 import { getTickets } from '../utils/api/serviceApi';
 
 /* eslint-disable react/prop-types */
-export const TicketsPage = ({ filmId, filmName, person, card, tickets, setTickets, day, time }) => {
-  const [data, setdata] = useState(null);
-
+export const TicketsPage = ({ filmId, person, card, tickets, day, time }) => {
   useEffect(() => {
     getTickets({
       filmId,
@@ -21,20 +19,16 @@ export const TicketsPage = ({ filmId, filmName, person, card, tickets, setTicket
       tickets
     })
       .then(({ data }) => {
-        setdata(data);
+        localStorage.setItem('data', JSON.stringify(data));
         toast.success('Билеты куплены');
         setShowModal(true);
-        setTickets([]);
       })
       .catch((error) => {
         console.log(error);
         console.log(error.response.data.reason);
-        setTickets([]);
         toast.error(error.response.data.reason);
-        // toast.error('Произошла ошибка при покупке билетов');
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [card, day, filmId, person, tickets, time]);
 
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => {
@@ -43,26 +37,36 @@ export const TicketsPage = ({ filmId, filmName, person, card, tickets, setTicket
 
   //   console.log('tickets', tickets);
   //   console.log('filmName', filmName);
+  const data = JSON.parse(localStorage.getItem('data'));
+  //   localStorage.setItem('filmName', filmName);
+  const filmName = localStorage.getItem('filmName');
 
   return (
-    <>
+    <section className='tickets-section'>
       {!data && <h1 className='tickets-page-title'>Tickets</h1>}
       {data && (
         <>
-          <h2>Билеты</h2>
+          <h2 className='movie-ticket-title'>Билеты</h2>
           <div className='movie-ticket'>
-            <p>
-              Дата {data.order.tickets.map((ticket) => ticket.seance.date)[0]} и время{' '}
-              {data.order.tickets.map((ticket) => ticket.seance.time)[0]}
+            <div className='movie-ticket-date-container'>
+              <span className='movie-ticket-date'>
+                {data.order.tickets.map((ticket) => ticket.seance.date)[0]}
+              </span>
+              <span className='movie-ticket-time'>
+                {' '}
+                в {data.order.tickets.map((ticket) => ticket.seance.time)[0]}
+              </span>
+            </div>
+            <h3 className='movie-name-title'>{filmName}</h3>
+            <p className='movie-ticket-text'>
+              {data.order.tickets.map((ticket) => `${ticket.row}`).join(', ')}ряд ---{' '}
+              {data.order.tickets.map((ticket) => `${ticket.column}`).join(', ')}место
             </p>
-            <h3>filmName {filmName}</h3>
-            <p>
-              ряд и место{' '}
-              {data.order.tickets.map((ticket) => `${ticket.row}-${ticket.column}`).join(', ')}
-            </p>
-            <p>Оплачен</p>
-            <p>Код билета {data.order.orderNumber}</p>
-            <Button>Вернуть билет</Button>
+            <span className='movie-ticket-text'>Оплачен</span>
+            <span className='movie-ticket-text ticket-code'>
+              Код билета {data.order.orderNumber}
+            </span>
+            <Button style={{ width: '300px' }}>Вернуть билет</Button>
           </div>
         </>
       )}
@@ -101,6 +105,6 @@ export const TicketsPage = ({ filmId, filmName, person, card, tickets, setTicket
       )}
 
       <ToastContainer />
-    </>
+    </section>
   );
 };

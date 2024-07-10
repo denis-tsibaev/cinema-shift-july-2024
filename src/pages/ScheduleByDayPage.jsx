@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import { Button } from '../components/Button';
 import { SeatsPage } from './SeatsPage';
 
@@ -8,6 +8,10 @@ import { SeatsPage } from './SeatsPage';
 export const ScheduleByDayPage = ({ schedules, index, time, setTime, tickets, setTickets }) => {
   const [hallName, setHallName] = useState('Red');
   const [places, setPlaces] = useState([]);
+  const [payedTickets, setPayedTickets] = useState([]);
+
+  console.log('schedules', schedules);
+  console.log('payedTickets', payedTickets);
 
   return (
     <>
@@ -19,11 +23,11 @@ export const ScheduleByDayPage = ({ schedules, index, time, setTime, tickets, se
                 className='hall-name-button'
                 style={{ backgroundColor: hall.name }}
                 onClick={() => {
-                  //   console.log('places-array: ', schedules[index].seances[i].hall.name);
+                  setPayedTickets(schedules[index]?.seances[i]?.payedTickets);
                   setHallName(schedules[index]?.seances[i]?.hall?.name);
                   setPlaces(schedules[index].seances[i]?.hall.places);
                   setTime(time);
-                  toast.info(`${hall.name} - ${time}`, { autoClose: 750 });
+                  //   toast.success(`${hall.name} - ${time}`, { autoClose: 750 });
                 }}
               >
                 {time}-
