@@ -39,9 +39,7 @@ export const ProfilePage = () => {
           </p>
         )}
       </div>
-      <Button onClick={toggleModal} style={{ width: '300px' }}>
-        Посмотреть купленные билеты
-      </Button>
+      {/* <Button onClick={toggleModal}>Modal Window</Button> */}
       {showModal && (
         <Modal>
           <div style={{ marginTop: '50px', marginBottom: '50px' }}>

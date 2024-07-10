@@ -411,8 +411,8 @@ button:disabled {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  width: 600px;
-  height: 350px;
+  width: 500px;
+  min-height: 300px;
   padding: 15px;
   border-radius: 5%;
   background-color: #ffffffaa;
@@ -439,13 +439,24 @@ button:disabled {
   font-size: 18px;
 }
 
-.ticket-code {
+.movie-ticket-info-container {
+  font-size: 18px;
   color: gray;
+
+  .movie-ticket-payInfo {
+    margin-right: 100px;
+    padding: 15px;
+    color: #4ecf53;
+    border-radius: 150px;
+    background-color: #ecf9f2;
+  }
+
+  .movie-ticket-code {
+    margin-left: 100px;
+  }
 }
 
 .tickets-page {
-  padding: 50px;
-
   .subtitle-and-image-container {
     font-size: 24px;
     margin-bottom: 48px;
@@ -458,7 +469,7 @@ button:disabled {
 
 .paragraph-container {
   text-align: left;
-  margin-bottom: 75px;
+  margin-bottom: 48px;
 
   .paragraph {
     font-size: 18px;

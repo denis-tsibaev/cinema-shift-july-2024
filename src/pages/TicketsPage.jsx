@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import acceptIcon from '../assets/images/accept.svg';
 import { Button } from '../components/Button';
 import { Modal } from '../components/Modal';
-import { getTickets } from '../utils/api/serviceApi';
+import { getTickets, cancelTicket } from '../utils/api/serviceApi';
 
 /* eslint-disable react/prop-types */
 export const TicketsPage = ({ filmId, person, card, tickets, day, time }) => {
@@ -31,14 +31,20 @@ export const TicketsPage = ({ filmId, person, card, tickets, day, time }) => {
   }, [card, day, filmId, person, tickets, time]);
 
   const [showModal, setShowModal] = useState(false);
+  const [showCancelModal, setShowCancelModal] = useState(false);
   const toggleModal = () => {
     setShowModal(!showModal);
+  };
+  const toggleModal2 = () => {
+    setShowCancelModal(!showCancelModal);
   };
 
   //   console.log('tickets', tickets);
   //   console.log('filmName', filmName);
+  console.log('tickets', tickets);
+
   const data = JSON.parse(localStorage.getItem('data'));
-  //   localStorage.setItem('filmName', filmName);
+  const order = data.order.orderNumber;
   const filmName = localStorage.getItem('filmName');
 
   return (
@@ -59,14 +65,27 @@ export const TicketsPage = ({ filmId, person, card, tickets, day, time }) => {
             </div>
             <h3 className='movie-name-title'>{filmName}</h3>
             <p className='movie-ticket-text'>
-              {data.order.tickets.map((ticket) => `${ticket.row}`).join(', ')}ряд ---{' '}
-              {data.order.tickets.map((ticket) => `${ticket.column}`).join(', ')}место
+              <b> ряд-место: </b>
+              {data.order.tickets.map((ticket) => `${ticket.row}-${ticket.column}`).join(', ')}
             </p>
-            <span className='movie-ticket-text'>Оплачен</span>
-            <span className='movie-ticket-text ticket-code'>
-              Код билета {data.order.orderNumber}
-            </span>
-            <Button style={{ width: '300px' }}>Вернуть билет</Button>
+            <div className='movie-ticket-info-container'>
+              <span className='movie-ticket-payInfo'>Оплачен</span>
+              <span className='movie-ticket-code'>код билета {order}</span>
+            </div>
+            <Button style={{ width: '300px' }} onClick={setShowCancelModal}>
+              Вернуть билет
+            </Button>
+            {showCancelModal && (
+              <Modal>
+                <h3 style={{ marginTop: '50px', marginBottom: '50px' }}>
+                  Вы передумали и хотите вернуть билет?
+                </h3>
+                <Button style={{ marginRight: '20px' }} onClick={toggleModal2}>
+                  Нет
+                </Button>
+                <Button onClick={() => cancelTicket(order)}>Вернуть</Button>
+              </Modal>
+            )}
           </div>
         </>
       )}
@@ -82,7 +101,7 @@ export const TicketsPage = ({ filmId, person, card, tickets, day, time }) => {
               <div className='paragraph-container'>
                 <p className='paragraph'>
                   <b>Номер заказа: </b>
-                  {data.order.orderNumber}
+                  {order}
                 </p>
                 <p className='paragraph'>
                   <b>Билеты (ряд-место): </b>
