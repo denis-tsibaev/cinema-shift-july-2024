@@ -15,20 +15,36 @@ export const CreditCard = ({ setCard }) => {
     };
 
     setCard({ ...card });
-    // console.log('card: ', card);
     navigate('/tickets');
   };
   return (
     <form className='credit-card-form' onSubmit={onSubmit}>
       <div className='credit-card-form-container'>
         <label>
-          номер карты* <input type='number' name='pan' placeholder='0000 0000' required />
+          номер карты*{' '}
+          <input
+            type='number'
+            name='pan'
+            placeholder='0000 0000'
+            required
+            minLength={8}
+            maxLength={8}
+          />
         </label>
         <label>
-          срок* <input type='number' name='expireDate' placeholder='00/00' required />
+          срок*{' '}
+          <input
+            type='number'
+            name='expireDate'
+            placeholder='00/00'
+            required
+            minLength={4}
+            maxLength={4}
+          />
         </label>
         <label>
-          CVV* <input type='number' name='cvv' placeholder='0000' required />
+          CVV*{' '}
+          <input type='number' name='cvv' placeholder='0000' required minLength={4} maxLength={4} />
         </label>
       </div>
       <Button type='submit'>Оплатить</Button>

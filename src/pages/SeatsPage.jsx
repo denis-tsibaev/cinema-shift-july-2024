@@ -8,26 +8,25 @@ export const SeatsPage = ({ hallName, places, time, tickets, setTickets }) => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
-  //   const [tickets, setTickets] = useState([]);
 
-  const handleChangeInput = (e) => {
-    if (e.target.checked) {
-      setTotalPrice(totalPrice + Number(e.target.value));
+  const handleChangeInput = (event) => {
+    if (event.target.checked) {
+      setTotalPrice(totalPrice + Number(event.target.value));
       tickets.push({
-        row: e.target.attributes.row.value,
-        column: e.target.attributes.column.value,
-        id: e.target.attributes.row.value + e.target.attributes.column.value
+        row: event.target.attributes.row.value,
+        column: event.target.attributes.column.value,
+        id: event.target.attributes.row.value + event.target.attributes.column.value
       });
     } else {
-      setTotalPrice(totalPrice - Number(e.target.value));
-      setTickets(
-        tickets.filter(
-          (ticket) => ticket.id !== e.target.attributes.row.value + e.target.attributes.column.value
-        )
-      );
+      setTotalPrice(totalPrice - Number(event.target.value));
+      tickets &&
+        setTickets(
+          tickets.filter(
+            (ticket) =>
+              ticket.id !== event.target.attributes.row.value + event.target.attributes.column.value
+          )
+        );
     }
-    // console.log(e.target);
-    // console.log(e.target.value);
   };
 
   //   console.log(tickets);

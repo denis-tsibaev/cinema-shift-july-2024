@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -8,10 +7,8 @@ import { Button } from '../components/Button';
 import { getSchedule } from '../utils/api/serviceApi';
 import { ScheduleByDayPage } from './ScheduleByDayPage';
 
-export const SchedulePage = ({ setFilmId, setDay, time, setTime, tickets, setTickets }) => {
+export const SchedulePage = ({ setDay, time, setTime, tickets, setTickets }) => {
   const { filmId } = useParams();
-  setFilmId(filmId);
-
   const [schedules, setSchedules] = useState([]);
   const [index, setIndex] = useState(0);
 
@@ -31,6 +28,7 @@ export const SchedulePage = ({ setFilmId, setDay, time, setTime, tickets, setTic
           onClick={() => {
             setIndex(index);
             setDay(schedules[index]?.date);
+            // toast.success(`Выбрана дата: ${schedules[index]?.date}`, { autoClose: 750 });
           }}
         >
           {date}

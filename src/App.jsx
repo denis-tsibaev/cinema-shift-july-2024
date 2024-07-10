@@ -15,17 +15,13 @@ import { TicketsPage } from './pages/TicketsPage';
 import { ROUTES } from './utils/constants/router';
 import { store } from './utils/redux/store';
 
-// eslint-disable-next-line react-hooks/rules-of-hooks
-
 function App() {
-  //   const [filmId, setFilmId] = useState(null);
   const [day, setDay] = useState(null);
   const [time, setTime] = useState(null);
   const [tickets, setTickets] = useState([]);
   const [person, setPerson] = useState({});
   const [card, setCard] = useState({});
   const [filmId, setFilmId] = useState(null);
-  const [filmName, setFilmName] = useState(null);
 
   return (
     <BrowserRouter>
@@ -34,11 +30,8 @@ function App() {
         <Provider store={store}>
           <Routes>
             <Route path={ROUTES.HOME} element={<HomePage />} />
-            <Route path={ROUTES.MOVIE} element={<MoviePage setFilmName={setFilmName} />} />
-            <Route
-              path={ROUTES.PROFILE}
-              element={<ProfilePage person={person} setPerson={setPerson} />}
-            />
+            <Route path={ROUTES.MOVIE} element={<MoviePage setFilmId={setFilmId} />} />
+            <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
             <Route
               path={ROUTES.TICKETS}
               element={
@@ -48,11 +41,9 @@ function App() {
                   setTime={setTime}
                   tickets={tickets}
                   setTickets={setTickets}
-                  ё
                   person={person}
                   card={card}
                   filmId={filmId}
-                  filmName={filmName}
                 />
               }
             />
@@ -72,7 +63,6 @@ function App() {
                   tickets={tickets}
                   setTickets={setTickets}
                   filmId={filmId}
-                  setFilmId={setFilmId}
                 />
               }
             />

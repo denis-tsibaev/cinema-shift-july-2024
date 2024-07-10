@@ -13,7 +13,7 @@ export const PaymentCardPage = ({ setCard }) => {
 
   return (
     <div style={{ fontSize: '150px', padding: '150px 0' }}>
-      PaymentPage
+      {/* PaymentPage */}
       {showModal && (
         <Modal>
           <CreditCard toggleModal={toggleModal} setCard={setCard} />

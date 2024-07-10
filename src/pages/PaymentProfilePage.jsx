@@ -13,7 +13,7 @@ export const PaymentProfilePage = ({ setPerson }) => {
 
   return (
     <div style={{ fontSize: '100px', padding: '150px 0' }}>
-      PaymentProfilePage
+      {/* PaymentProfilePage */}
       {showModal && (
         <Modal>
           <Person setPerson={setPerson} />
