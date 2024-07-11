@@ -28,7 +28,7 @@ export const SeatsPage = ({ hallName, places, date, time, tickets, setTickets })
     }
   };
 
-  //   console.log('tickets', tickets);
+  console.log('tickets', tickets);
   //   console.log('places', places);
 
   const toggleModal = () => {
@@ -37,50 +37,59 @@ export const SeatsPage = ({ hallName, places, date, time, tickets, setTickets })
 
   return (
     <>
-      <div className='seats-container'>
-        <h1 className='seats-title'>Выбор места</h1>
-        <h2 className='hall-name-date'>
-          {hallName === 'Red' ? 'Красный зал' : hallName === 'Green' ? 'Зеленый зал' : 'Синий зал'},
-          сеанс {date} на: {time}
-        </h2>
-        <p className='screen'>ЭКРАН</p>
-        <br />
-        <br />
-        <ol className={hallName}>
-          {places?.map((row, i) =>
-            row.map((seat, j) => (
-              <>
-                <li key={j} className='checkbox-item'>
-                  <p className='checkbox-item-row'>{i + 1}р</p>
-                  <p className='checkbox-item-seat'>{j + 1}м</p>
-                  <label className='label-checkbox'>
-                    <p className='checkbox-item-price'> {seat.price}</p>
-                    {seat.type !== 'BLOCKED' ? (
-                      <input
-                        type='checkbox'
-                        name='seat'
-                        value={seat.price}
-                        // eslint-disable-next-line react/no-unknown-property
-                        row={i + 1}
-                        // eslint-disable-next-line react/no-unknown-property
-                        column={j + 1}
-                        className='input-checkbox-seat'
-                        onChange={handleChangeInput}
-                      />
-                    ) : (
-                      <input disabled type='checkbox' className='input-checkbox-seat' />
-                    )}
-                  </label>
-                </li>
-              </>
-            ))
-          )}
-        </ol>
-      </div>
-      <p className='total-price'>Итого: {totalPrice} &#8381;</p>
-      <Button onClick={toggleModal} disabled={totalPrice === 0}>
-        Купить
-      </Button>
+      {places.length > 0 && (
+        <div className='seats-container-animation'>
+          <div className='seats-container'>
+            <h1 className='seats-title'>Выбор места</h1>
+            <h2 className='hall-name-date'>
+              {hallName === 'Red'
+                ? 'Красный зал'
+                : hallName === 'Green'
+                  ? 'Зеленый зал'
+                  : 'Синий зал'}
+              , сеанс {date} на: {time}
+            </h2>
+            <p className='screen'>ЭКРАН</p>
+            <br />
+            <br />
+
+            <ol className={hallName}>
+              {places?.map((row, i) =>
+                row.map((seat, j) => (
+                  <>
+                    <li key={j} className='checkbox-item'>
+                      <p className='checkbox-item-row'>{i + 1}р</p>
+                      <p className='checkbox-item-seat'>{j + 1}м</p>
+                      <label className='label-checkbox'>
+                        <p className='checkbox-item-price'> {seat.price}</p>
+                        {seat.type !== 'BLOCKED' ? (
+                          <input
+                            type='checkbox'
+                            name='seat'
+                            value={seat.price}
+                            // eslint-disable-next-line react/no-unknown-property
+                            row={i + 1}
+                            // eslint-disable-next-line react/no-unknown-property
+                            column={j + 1}
+                            className='input-checkbox-seat'
+                            onChange={handleChangeInput}
+                          />
+                        ) : (
+                          <input disabled type='checkbox' className='input-checkbox-seat' />
+                        )}
+                      </label>
+                    </li>
+                  </>
+                ))
+              )}
+            </ol>
+          </div>
+          <p className='total-price'>Итого: {totalPrice} &#8381;</p>
+          <Button onClick={toggleModal} disabled={totalPrice === 0}>
+            Купить
+          </Button>
+        </div>
+      )}
       {showModal && (
         <Modal>
           <h2 className='modal-title'>Вы выбрали места</h2>

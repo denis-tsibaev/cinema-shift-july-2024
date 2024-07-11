@@ -21,9 +21,10 @@ function App() {
   const [day, setDay] = useState(null);
   const [time, setTime] = useState(null);
   const [tickets, setTickets] = useState([]);
-  const [person, setPerson] = useState({});
+  const [person, setPerson] = useState(null);
   const [card, setCard] = useState({});
   const [filmId, setFilmId] = useState(null);
+  const [token, setToken] = useState(null);
 
   return (
     <BrowserRouter>
@@ -45,12 +46,13 @@ function App() {
                   person={person}
                   card={card}
                   filmId={filmId}
+                  setToken={setToken}
                 />
               }
             />
             <Route
               path={ROUTES.PAYMENT_PROFILE}
-              element={<PaymentProfilePage setPerson={setPerson} />}
+              element={<PaymentProfilePage setPerson={setPerson} token={token} />}
             />
             <Route path={ROUTES.PAYMENT_CARD} element={<PaymentCardPage setCard={setCard} />} />
             <Route

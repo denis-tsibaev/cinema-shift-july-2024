@@ -34,7 +34,6 @@ export const SchedulePage = ({ setDay, time, setTime, tickets, setTickets }) => 
           {date}
         </Button>
       ))}
-      <h3 className='schedule-hall-to-choose'>Выберите время и зал</h3>
 
       <ScheduleByDayPage
         schedules={schedules}

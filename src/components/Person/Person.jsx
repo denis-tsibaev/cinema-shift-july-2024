@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useNavigate } from 'react-router-dom';
+import { updateUser } from '../../utils/api/serviceApi';
 import { Button } from '../Button';
 import '../CreditCard/CreditCard.css';
 
@@ -12,12 +13,14 @@ export const Person = ({ setPerson }) => {
       firstname: e.target.name.value,
       lastname: e.target.surname.value,
       middlename: e.target.patronymic.value,
-      phone: e.target.phone.value,
-      email: e.target.email.value
+      email: e.target.email.value,
+      city: 'Novosibirsk',
+      phone: e.target.phone.value
     };
     setPerson({ ...person });
-    localStorage.setItem('person', JSON.stringify(person));
+    updateUser(person);
     navigate('/payment-card');
+    // localStorage.setItem('person', JSON.stringify(person));
   };
 
   return (

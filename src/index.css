@@ -41,6 +41,7 @@ img {
 .afisha-title {
   text-align-last: left;
   margin-left: 48px;
+  margin-bottom: 16px;
   font-size: 48px;
 }
 
@@ -169,6 +170,8 @@ img {
 }
 
 .schedule-container {
+  margin-top: 36px;
+  margin-bottom: 36px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -185,7 +188,7 @@ img {
 }
 
 .hall-info {
-  width: 200px;
+  width: 300px;
 }
 
 .screen {

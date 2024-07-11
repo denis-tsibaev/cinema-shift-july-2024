@@ -6,21 +6,23 @@ import './Header.css';
 
 export const Header = () => {
   return (
-    <nav className='nav'>
-      <Link to='/'>
-        <img src={CinemaLogo} width={102} alt='cinema-shift-logo' />
-      </Link>
-      <Link to='/' className='nav-link'>
-        Главная
-      </Link>
-      <Link to='/profile' className='nav-link'>
-        <img src={cinemaPersonIcon} alt='person logo' />
-        Профиль
-      </Link>
-      <Link to='/tickets' className='nav-link'>
-        <img src={cinemaTicketIcon} alt='ticket logo' />
-        Билеты
-      </Link>
-    </nav>
+    <header>
+      <nav className='nav'>
+        <Link to='/'>
+          <img src={CinemaLogo} width={102} alt='cinema-shift-logo' />
+        </Link>
+        <Link to='/' className='nav-link'>
+          Главная
+        </Link>
+        <Link to='/profile' className='nav-link'>
+          <img src={cinemaPersonIcon} alt='person logo' />
+          Профиль
+        </Link>
+        <Link to='/tickets' className='nav-link'>
+          <img src={cinemaTicketIcon} alt='ticket logo' />
+          Билеты
+        </Link>
+      </nav>
+    </header>
   );
 };
