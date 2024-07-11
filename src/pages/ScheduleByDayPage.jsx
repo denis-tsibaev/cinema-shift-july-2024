@@ -1,17 +1,21 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
-import { ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { Button } from '../components/Button';
 import { SeatsPage } from './SeatsPage';
 
 // eslint-disable-next-line react/prop-types
-export const ScheduleByDayPage = ({ schedules, index, time, setTime, tickets, setTickets }) => {
+export const ScheduleByDayPage = ({
+  schedules,
+  index,
+  date,
+  time,
+  setTime,
+  tickets,
+  setTickets
+}) => {
   const [hallName, setHallName] = useState('Red');
   const [places, setPlaces] = useState([]);
-  const [payedTickets, setPayedTickets] = useState([]);
-
-  console.log('schedules', schedules);
-  console.log('payedTickets', payedTickets);
 
   return (
     <>
@@ -23,11 +27,10 @@ export const ScheduleByDayPage = ({ schedules, index, time, setTime, tickets, se
                 className='hall-name-button'
                 style={{ backgroundColor: hall.name }}
                 onClick={() => {
-                  setPayedTickets(schedules[index]?.seances[i]?.payedTickets);
                   setHallName(schedules[index]?.seances[i]?.hall?.name);
                   setPlaces(schedules[index].seances[i]?.hall.places);
                   setTime(time);
-                  //   toast.success(`${hall.name} - ${time}`, { autoClose: 750 });
+                  toast.success(`${hall.name} - ${time}`, { autoClose: 750 });
                 }}
               >
                 {time}-
@@ -55,12 +58,11 @@ export const ScheduleByDayPage = ({ schedules, index, time, setTime, tickets, se
       <SeatsPage
         hallName={hallName}
         places={places}
+        date={date}
         time={time}
         tickets={tickets}
-        setTic
-        kets={setTickets}
+        setTickets={setTickets}
       />
-      <ToastContainer />
     </>
   );
 };

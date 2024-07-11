@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Container } from './components/Container';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
@@ -40,7 +42,6 @@ function App() {
                   time={time}
                   setTime={setTime}
                   tickets={tickets}
-                  setTickets={setTickets}
                   person={person}
                   card={card}
                   filmId={filmId}
@@ -62,7 +63,6 @@ function App() {
                   setTime={setTime}
                   tickets={tickets}
                   setTickets={setTickets}
-                  filmId={filmId}
                 />
               }
             />
@@ -71,6 +71,7 @@ function App() {
         </Provider>
         <Footer />
       </Container>
+      <ToastContainer />
     </BrowserRouter>
   );
 }

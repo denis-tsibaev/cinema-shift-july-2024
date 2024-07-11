@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import acceptIcon from '../assets/images/accept.svg';
 import { Button } from '../components/Button';
 import { Modal } from '../components/Modal';
-import { getTickets, cancelTicket } from '../utils/api/serviceApi';
+import { getTickets } from '../utils/api/serviceApi';
 
 /* eslint-disable react/prop-types */
 export const TicketsPage = ({ filmId, person, card, tickets, day, time }) => {
@@ -41,10 +41,12 @@ export const TicketsPage = ({ filmId, person, card, tickets, day, time }) => {
 
   //   console.log('tickets', tickets);
   //   console.log('filmName', filmName);
-  console.log('tickets', tickets);
 
   const data = JSON.parse(localStorage.getItem('data'));
-  const order = data.order.orderNumber;
+  //   const order = data.order.orderNumber;
+  //   const date = data.order.tickets.map((ticket) => ticket.seance.date)[0];
+  //   const hourmin = data.order.tickets.map((ticket) => ticket.seance.time)[0];
+  //   const rowcol = data.order.tickets.map((ticket) => `${ticket.row}-${ticket.column}`).join(', ');
   const filmName = localStorage.getItem('filmName');
 
   return (
@@ -70,7 +72,7 @@ export const TicketsPage = ({ filmId, person, card, tickets, day, time }) => {
             </p>
             <div className='movie-ticket-info-container'>
               <span className='movie-ticket-payInfo'>Оплачен</span>
-              <span className='movie-ticket-code'>код билета {order}</span>
+              <span className='movie-ticket-code'>код билета {data.order.orderNumber}</span>
             </div>
             <Button style={{ width: '300px' }} onClick={setShowCancelModal}>
               Вернуть билет
@@ -83,7 +85,7 @@ export const TicketsPage = ({ filmId, person, card, tickets, day, time }) => {
                 <Button style={{ marginRight: '20px' }} onClick={toggleModal2}>
                   Нет
                 </Button>
-                <Button onClick={() => cancelTicket(order)}>Вернуть</Button>
+                <Button onClick={() => {}}>Вернуть</Button>
               </Modal>
             )}
           </div>
@@ -92,7 +94,7 @@ export const TicketsPage = ({ filmId, person, card, tickets, day, time }) => {
 
       {showModal && (
         <Modal>
-          {data && data.success && (
+          {data.success && (
             <div className='tickets-page'>
               <div className='subtitle-and-image-container'>
                 <img src={acceptIcon} alt='tickets payed accept icon' />
@@ -100,8 +102,8 @@ export const TicketsPage = ({ filmId, person, card, tickets, day, time }) => {
               </div>
               <div className='paragraph-container'>
                 <p className='paragraph'>
-                  <b>Номер заказа: </b>
-                  {order}
+                  <b>Номер билета: </b>
+                  {data.order.orderNumber}
                 </p>
                 <p className='paragraph'>
                   <b>Билеты (ряд-место): </b>
@@ -122,8 +124,6 @@ export const TicketsPage = ({ filmId, person, card, tickets, day, time }) => {
           <Button onClick={toggleModal}>Закрыть</Button>
         </Modal>
       )}
-
-      <ToastContainer />
     </section>
   );
 };
