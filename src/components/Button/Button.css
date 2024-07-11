@@ -28,7 +28,8 @@
   padding: 8px 16px;
 
   &:hover,
-  &:focus {
+  &:focus,
+  &:active {
     cursor: pointer;
     background-color: #fff;
     color: #9534d2;
@@ -47,5 +48,8 @@
   &:focus {
     cursor: pointer;
     transform: scaleX(1.02);
+  }
+  &:active {
+    color: black;
   }
 }

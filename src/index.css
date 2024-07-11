@@ -159,16 +159,13 @@ img {
  } */
 
 .schedule-title {
-  margin-bottom: 16px;
-}
-
-.schedule-date {
-  margin: 16px;
+  margin-bottom: 18px;
 }
 
 .schedule-hall-to-choose {
-  margin-bottom: 16px;
-  font-size: 22px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  font-size: 24px;
 }
 
 .schedule-container {

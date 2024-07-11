@@ -4,11 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { Modal } from '../components/Modal';
 
-export const SeatsPage = ({ hallName, places, time, tickets, setTickets }) => {
+export const SeatsPage = ({ hallName, places, date, time, tickets, setTickets }) => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
-
   const handleChangeInput = (event) => {
     if (event.target.checked) {
       setTotalPrice(totalPrice + Number(event.target.value));
@@ -19,17 +18,18 @@ export const SeatsPage = ({ hallName, places, time, tickets, setTickets }) => {
       });
     } else {
       setTotalPrice(totalPrice - Number(event.target.value));
-      tickets &&
-        setTickets(
-          tickets.filter(
-            (ticket) =>
-              ticket.id !== event.target.attributes.row.value + event.target.attributes.column.value
-          )
-        );
+
+      setTickets(
+        tickets.filter(
+          (ticket) =>
+            ticket.id !== event.target.attributes.row.value + event.target.attributes.column.value
+        )
+      );
     }
   };
 
-  //   console.log(tickets);
+  //   console.log('tickets', tickets);
+  //   console.log('places', places);
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -41,7 +41,7 @@ export const SeatsPage = ({ hallName, places, time, tickets, setTickets }) => {
         <h1 className='seats-title'>Выбор места</h1>
         <h2 className='hall-name-date'>
           {hallName === 'Red' ? 'Красный зал' : hallName === 'Green' ? 'Зеленый зал' : 'Синий зал'},
-          сеанс на: {time}
+          сеанс {date} на: {time}
         </h2>
         <p className='screen'>ЭКРАН</p>
         <br />
@@ -79,7 +79,7 @@ export const SeatsPage = ({ hallName, places, time, tickets, setTickets }) => {
       </div>
       <p className='total-price'>Итого: {totalPrice} &#8381;</p>
       <Button onClick={toggleModal} disabled={totalPrice === 0}>
-        Подтвердить
+        Купить
       </Button>
       {showModal && (
         <Modal>

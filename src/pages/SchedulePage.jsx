@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+
 import { Button } from '../components/Button';
 import { getSchedule } from '../utils/api/serviceApi';
 import { ScheduleByDayPage } from './ScheduleByDayPage';
@@ -20,7 +20,7 @@ export const SchedulePage = ({ setDay, time, setTime, tickets, setTickets }) => 
 
   return (
     <div className='movie-page'>
-      <h1 className='schedule-title'>Расписание</h1>
+      <h1 className='schedule-title'>Расписание на {schedules[index]?.date} </h1>
       {schedules.map(({ date }, index) => (
         <Button
           className='schedule-button'
@@ -28,25 +28,23 @@ export const SchedulePage = ({ setDay, time, setTime, tickets, setTickets }) => 
           onClick={() => {
             setIndex(index);
             setDay(schedules[index]?.date);
-            // toast.success(`Выбрана дата: ${schedules[index]?.date}`, { autoClose: 750 });
+            toast.success(`Выбрана дата: ${schedules[index]?.date}`, { autoClose: 750 });
           }}
         >
           {date}
         </Button>
       ))}
-      <h2 className='schedule-date'>Выбрана дата: {schedules[index]?.date}</h2>
       <h3 className='schedule-hall-to-choose'>Выберите время и зал</h3>
 
       <ScheduleByDayPage
         schedules={schedules}
         index={index}
+        date={schedules[index]?.date}
         time={time}
         setTime={setTime}
         tickets={tickets}
         setTickets={setTickets}
       />
-
-      <ToastContainer />
     </div>
   );
 };
