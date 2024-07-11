@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import acceptIcon from '../assets/images/accept.svg';
 import { Button } from '../components/Button';
 import { Modal } from '../components/Modal';
-import { getTickets } from '../utils/api/serviceApi';
+import { cancelTicket, getTickets } from '../utils/api/serviceApi';
 
 /* eslint-disable react/prop-types */
 export const TicketsPage = ({ filmId, person, card, tickets, day, time }) => {
@@ -43,11 +43,13 @@ export const TicketsPage = ({ filmId, person, card, tickets, day, time }) => {
   //   console.log('filmName', filmName);
 
   const data = JSON.parse(localStorage.getItem('data'));
+  const filmName = localStorage.getItem('filmName');
   //   const order = data.order.orderNumber;
   //   const date = data.order.tickets.map((ticket) => ticket.seance.date)[0];
   //   const hourmin = data.order.tickets.map((ticket) => ticket.seance.time)[0];
   //   const rowcol = data.order.tickets.map((ticket) => `${ticket.row}-${ticket.column}`).join(', ');
-  const filmName = localStorage.getItem('filmName');
+  //   console.log('data', data);
+  //   console.log('data.order', data.order.orderNumber.toString());
 
   return (
     <section className='tickets-section'>
@@ -85,7 +87,9 @@ export const TicketsPage = ({ filmId, person, card, tickets, day, time }) => {
                 <Button style={{ marginRight: '20px' }} onClick={toggleModal2}>
                   Нет
                 </Button>
-                <Button onClick={() => {}}>Вернуть</Button>
+                <Button onClick={() => cancelTicket(data.order.orderNumber.toString())}>
+                  Вернуть
+                </Button>
               </Modal>
             )}
           </div>

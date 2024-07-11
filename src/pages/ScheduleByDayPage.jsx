@@ -47,6 +47,7 @@ export const ScheduleByDayPage = ({
         </ol>
         <div className='hall-info'>
           <p className='hall-name'>
+            <h3 className='schedule-hall-to-choose'>Выберите время и зал</h3>
             {hallName === 'Red' ? 'Красный' : hallName === 'Green' ? 'Зелёный' : 'Синий'} Зал
           </p>
           <p className='hall-seats'>
