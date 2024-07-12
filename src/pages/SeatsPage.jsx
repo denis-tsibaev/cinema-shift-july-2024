@@ -28,7 +28,7 @@ export const SeatsPage = ({ hallName, places, date, time, tickets, setTickets })
     }
   };
 
-  console.log('tickets', tickets);
+  //   console.log('tickets', tickets);
   //   console.log('places', places);
 
   const toggleModal = () => {

@@ -18,7 +18,16 @@ export const Person = ({ setPerson }) => {
       phone: e.target.phone.value
     };
     setPerson({ ...person });
-    updateUser(person);
+    updateUser({
+      profile: {
+        firstname: person.firstname,
+        middlename: person.middlename,
+        lastname: person.lastname,
+        email: person.email,
+        city: 'Novosibirsk'
+      },
+      phone: person.phone
+    });
     navigate('/payment-card');
     // localStorage.setItem('person', JSON.stringify(person));
   };

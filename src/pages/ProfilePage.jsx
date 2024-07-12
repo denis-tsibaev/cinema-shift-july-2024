@@ -4,7 +4,7 @@ import crossIcon from '../assets/images/cross.svg';
 import { Button } from '../components/Button';
 import '../components/CreditCard/CreditCard.css';
 import { Modal } from '../components/Modal';
-import { getOrders, getOtpCode, getUserSession, userSignin } from '../utils/api/serviceApi';
+import { getOrders, getOtpCode, userSession, userSignin } from '../utils/api/serviceApi';
 
 export const ProfilePage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -13,7 +13,15 @@ export const ProfilePage = () => {
   };
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [phoneNumber, setPhoneNumber] = useState('');
-  const pesron = { phone: phoneNumber, firstname: '', lastname: '', middlename: '', email: '' };
+  const personDefault = {
+    firstname: '',
+    lastname: '',
+    middlename: '',
+    email: '',
+    city: 'Novosibirsk',
+    phone: phoneNumber
+  };
+  const person = JSON.parse(localStorage.getItem('person')) || personDefault;
   const [orders, setOrders] = useState([]);
   const getCodeSubmit = (event) => {
     event.preventDefault();
@@ -41,17 +49,14 @@ export const ProfilePage = () => {
     });
   };
 
-  const aboutUser = async () => {
-    try {
-      const data = await getUserSession();
-      console.log(data);
-    } catch (error) {
-      console.log('error aboutUser: ', error.message);
-    }
+  const aboutUser = () => {
+    const userProfile = userSession();
+    console.log('userProfile: ', userProfile);
+    localStorage.setItem('person', JSON.stringify(userProfile));
   };
 
-  console.log('token: ', token);
-  console.log('orders: ', orders);
+  //   console.log('token: ', token);
+  //   console.log('orders: ', orders);
 
   const navigate = useNavigate();
 
@@ -84,10 +89,10 @@ export const ProfilePage = () => {
                 </Button>
               </form>
 
-              <form className='profile-page' onSubmit={otpSubmit}>
+              <form className='credit-card-form' onSubmit={otpSubmit}>
                 <label>
                   OTP код
-                  <input type='phone' name='otp' />
+                  <input type='phone' name='otp' required />
                 </label>
                 <Button type='submit'>Продолжить</Button>
               </form>
@@ -98,7 +103,6 @@ export const ProfilePage = () => {
       {token && (
         <div className='profile-page'>
           <h1 className='profile-title'>Личный кабинет</h1>
-
           <Button
             onClick={() => {
               localStorage.removeItem('token');
@@ -111,21 +115,22 @@ export const ProfilePage = () => {
           <Button onClick={aboutUser}>О пользователе</Button>
 
           <div className='user-profile-description-container'>
-            {pesron.firstname && (
+            {person.firstname && person.lastname && (
               <p className='user-profile-description'>
                 <b>
-                  Привет, {pesron.firstname} {pesron.lastname}!
+                  Привет, {person.firstname} {person.lastname}!
                 </b>
               </p>
             )}
-            {pesron.phone && (
+
+            {person.phone && (
               <p className='user-profile-description'>
-                <b>Телефон: </b> {pesron.phone}
+                <b>Телефон: </b> {person.phone}
               </p>
             )}
-            {pesron.email && (
+            {person.email && (
               <p className='user-profile-description'>
-                <b>Почта: </b> {pesron.email}
+                <b>Почта: </b> {person.email}
               </p>
             )}
           </div>
