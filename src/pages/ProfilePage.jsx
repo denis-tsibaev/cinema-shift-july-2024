@@ -4,7 +4,7 @@ import crossIcon from '../assets/images/cross.svg';
 import { Button } from '../components/Button';
 import '../components/CreditCard/CreditCard.css';
 import { Modal } from '../components/Modal';
-import { getOrders, getOtpCode, userSession, userSignin } from '../utils/api/serviceApi';
+import { getOrders, getOtpCode, getUserSession, userSignin } from '../utils/api/serviceApi';
 
 export const ProfilePage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -13,15 +13,8 @@ export const ProfilePage = () => {
   };
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [phoneNumber, setPhoneNumber] = useState('');
-  const personDefault = {
-    firstname: '',
-    lastname: '',
-    middlename: '',
-    email: '',
-    city: 'Novosibirsk',
-    phone: phoneNumber
-  };
-  const person = JSON.parse(localStorage.getItem('person')) || personDefault;
+  const [person, setPerson] = useState({});
+
   const [orders, setOrders] = useState([]);
   const getCodeSubmit = (event) => {
     event.preventDefault();
@@ -50,9 +43,10 @@ export const ProfilePage = () => {
   };
 
   const aboutUser = () => {
-    const userProfile = userSession();
-    console.log('userProfile: ', userProfile);
-    localStorage.setItem('person', JSON.stringify(userProfile));
+    getUserSession().then(({ data }) => {
+      setPerson(data.user);
+      console.log('user-info: ', data.user);
+    });
   };
 
   //   console.log('token: ', token);

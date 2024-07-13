@@ -44,14 +44,7 @@ export const userSignin = async (credentials) => {
 
 // export const getUserSession = () => axios.post('/users/session');
 
-export const userSession = async () => {
-  try {
-    const { data } = await axios.post('/users/session');
-    return data;
-  } catch (error) {
-    console.error(error.message);
-  }
-};
+export const getUserSession = () => axios.get('/users/session');
 
 export const updateUser = (profile) => axios.patch('/users/profile', profile);
 
