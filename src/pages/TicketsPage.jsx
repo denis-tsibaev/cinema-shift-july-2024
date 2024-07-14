@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import acceptIcon from '../assets/images/accept.svg';
 import { Button } from '../components/Button';
@@ -24,9 +25,9 @@ export const TicketsPage = ({ filmId, person, card, tickets, day, time }) => {
         setShowModal(true);
       })
       .catch((error) => {
-        console.log(error);
         console.log(error.response.data.reason);
-        toast.error(error.response.data.reason);
+        // console.log(error);
+        // toast.error(error.response.data.reason);
       });
   }, [card, day, filmId, person, tickets, time]);
 
@@ -43,17 +44,29 @@ export const TicketsPage = ({ filmId, person, card, tickets, day, time }) => {
   //   console.log('filmName', filmName);
 
   const data = JSON.parse(localStorage.getItem('data'));
+  const token = localStorage.getItem('token');
   const filmName = localStorage.getItem('filmName');
-  //   const order = data.order.orderNumber;
-  //   const date = data.order.tickets.map((ticket) => ticket.seance.date)[0];
-  //   const hourmin = data.order.tickets.map((ticket) => ticket.seance.time)[0];
-  //   const rowcol = data.order.tickets.map((ticket) => `${ticket.row}-${ticket.column}`).join(', ');
-  //   console.log('data', data);
-  //   console.log('data.order', data.order.orderNumber.toString());
+  const navigate = useNavigate();
+
+  const cancelTicketAuth = () => {
+    if (token) {
+      cancelTicket(data.order._id.toString()).then(({ data }) => {
+        console.log('cancel-data-success', data.success);
+        if (data.success) {
+          toast.success('Билет отменён');
+          navigate('/');
+        }
+      });
+    } else {
+      console.log('no token');
+      toast('Вы не авторизованы');
+      navigate('/profile');
+    }
+  };
 
   return (
     <section className='tickets-section'>
-      {!data && <h1 className='tickets-page-title'>Tickets</h1>}
+      {!data && <h1 className='tickets-page-title'>Здесь будут ваши билеты</h1>}
       {data && (
         <>
           <h2 className='movie-ticket-title'>Билеты</h2>
@@ -87,9 +100,7 @@ export const TicketsPage = ({ filmId, person, card, tickets, day, time }) => {
                 <Button style={{ marginRight: '20px' }} onClick={toggleModal2}>
                   Нет
                 </Button>
-                <Button onClick={() => cancelTicket(data.order.orderNumber.toString())}>
-                  Вернуть
-                </Button>
+                <Button onClick={cancelTicketAuth}>Вернуть</Button>
               </Modal>
             )}
           </div>

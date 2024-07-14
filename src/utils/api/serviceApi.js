@@ -36,16 +36,25 @@ export const userSignin = async (credentials) => {
   try {
     const { data } = await axios.post('/users/signin', credentials);
     token.set(data.token);
-    return data.token;
+    return data;
   } catch (error) {
     console.error(error.message);
   }
 };
 
-export const getUserSession = () => axios.post('/users/session');
+export const getUserSession = () => axios.get('/users/session');
 
 export const updateUser = (profile) => axios.patch('/users/profile', profile);
 
 export const getOrders = () => axios.get('/cinema/orders');
 
 export const cancelTicket = (orderId) => axios.put('/cinema/orders/cancel', { orderId });
+
+// export const cancelResponse = async (orderId) => {
+//   try {
+//     const { data } = await axios.put('/cinema/orders/cancel', { orderId });
+//     return data.then((data) => data);
+//   } catch (error) {
+//     // console.error(error.message);
+//   }
+// };
