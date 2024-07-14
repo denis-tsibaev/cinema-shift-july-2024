@@ -36,13 +36,11 @@ export const userSignin = async (credentials) => {
   try {
     const { data } = await axios.post('/users/signin', credentials);
     token.set(data.token);
-    return data.token;
+    return data;
   } catch (error) {
     console.error(error.message);
   }
 };
-
-// export const getUserSession = () => axios.post('/users/session');
 
 export const getUserSession = () => axios.get('/users/session');
 

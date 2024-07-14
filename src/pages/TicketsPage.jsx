@@ -66,7 +66,7 @@ export const TicketsPage = ({ filmId, person, card, tickets, day, time }) => {
 
   return (
     <section className='tickets-section'>
-      {!data && <h1 className='tickets-page-title'>Tickets</h1>}
+      {!data && <h1 className='tickets-page-title'>Здесь будут ваши билеты</h1>}
       {data && (
         <>
           <h2 className='movie-ticket-title'>Билеты</h2>

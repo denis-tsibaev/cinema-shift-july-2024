@@ -14,7 +14,7 @@ export const Person = ({ setPerson }) => {
       lastname: e.target.surname.value,
       middlename: e.target.patronymic.value,
       email: e.target.email.value,
-      city: 'Novosibirsk',
+      city: e.target.city.value,
       phone: e.target.phone.value
     };
     setPerson({ ...person });
@@ -24,12 +24,11 @@ export const Person = ({ setPerson }) => {
         middlename: person.middlename,
         lastname: person.lastname,
         email: person.email,
-        city: 'Novosibirsk'
+        city: person.city
       },
       phone: person.phone
     });
     navigate('/payment-card');
-    // localStorage.setItem('person', JSON.stringify(person));
   };
 
   return (
@@ -37,23 +36,27 @@ export const Person = ({ setPerson }) => {
       <div className='credit-card-form-container'>
         <label>
           Имя*
-          <input type='text' name='name' placeholder='Александр' required />
+          <input type='text' name='name' required />
         </label>
         <label>
           Фамилия*
-          <input type='text' name='surname' placeholder='Пушкин' required />
+          <input type='text' name='surname' required />
         </label>
         <label>
           Отчество
-          <input type='text' name='patronymic' placeholder='Сергеевич' />
+          <input type='text' name='patronymic' />
         </label>
         <label>
           Телефон*
-          <input type='phone' name='phone' placeholder='+7 (999) 999-99-99' required />
+          <input type='phone' name='phone' required />
         </label>
         <label>
           email*
-          <input type='phone' name='email' placeholder='mail@example.ru' required />
+          <input type='phone' name='email' required />
+        </label>
+        <label>
+          Город
+          <input type='text' name='city' />
         </label>
       </div>
       <Button type='submit'>Продолжить</Button>
