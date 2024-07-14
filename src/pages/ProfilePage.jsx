@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import crossIcon from '../assets/images/cross.svg';
@@ -25,7 +25,7 @@ export const ProfilePage = () => {
   };
 
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [token, setToken] = useState(localStorage.getItem('token'));
+  const [token, setToken] = useState(localStorage.getItem('token')) || null;
   const [person, setPerson] = useState({});
   const [orders, setOrders] = useState([]);
 
@@ -44,8 +44,11 @@ export const ProfilePage = () => {
     const otp = form.otp.value;
     userSignin({ phone: phoneNumber.toString(), code: otp }).then((data) => {
       setToken(data.token);
+      localStorage.setItem('token', data.token);
       setPerson(data.user);
-      toast.success('Вы авторизованы');
+      if (data.token) {
+        toast.success('Токен получен');
+      }
     });
     form.reset();
   };
@@ -84,6 +87,11 @@ export const ProfilePage = () => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    userInfo();
+    console.log(Date.now());
+  }, []);
+
   return (
     <>
       {!token && (
@@ -98,9 +106,7 @@ export const ProfilePage = () => {
                   <input type='phone' name='phone' required />
                 </label>
 
-                <Button type='submit' disabled={phoneNumber}>
-                  Получить код
-                </Button>
+                <Button type='submit'>Получить код</Button>
                 <Button
                   onClick={toggleModal}
                   style={{

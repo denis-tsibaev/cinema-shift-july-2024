@@ -38,7 +38,7 @@ export const userSignin = async (credentials) => {
     token.set(data.token);
     return data;
   } catch (error) {
-    console.error(error.message);
+    console.error('проверьте код', error);
   }
 };
 
