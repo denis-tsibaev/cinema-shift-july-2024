@@ -5,18 +5,26 @@ import { CreditCard } from '../components/CreditCard';
 import { Modal } from '../components/Modal/Modal';
 
 // eslint-disable-next-line react/prop-types
-export const PaymentCardPage = ({ setCard }) => {
+export const PaymentCardPage = ({ card, setCard, filmId, person, day, time, tickets }) => {
   const [showModal, setShowModal] = useState(true);
   const toggleModal = () => {
     setShowModal(!showModal);
   };
 
   return (
-    <div style={{ fontSize: '150px', padding: '150px 0' }}>
-      {/* PaymentPage */}
+    <div style={{ padding: '150px 0' }}>
       {showModal && (
         <Modal>
-          <CreditCard toggleModal={toggleModal} setCard={setCard} />
+          <CreditCard
+            toggleModal={toggleModal}
+            setCard={setCard}
+            card={card}
+            filmId={filmId}
+            person={person}
+            day={day}
+            time={time}
+            tickets={tickets}
+          />
           <Button
             onClick={toggleModal}
             style={{

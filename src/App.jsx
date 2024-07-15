@@ -22,9 +22,8 @@ function App() {
   const [time, setTime] = useState(null);
   const [tickets, setTickets] = useState([]);
   const [person, setPerson] = useState(null);
-  const [card, setCard] = useState({});
   const [filmId, setFilmId] = useState(null);
-  const [token, setToken] = useState(null);
+  //   const [token, setToken] = useState(null);
 
   return (
     <BrowserRouter>
@@ -35,26 +34,23 @@ function App() {
             <Route path={ROUTES.HOME} element={<HomePage />} />
             <Route path={ROUTES.MOVIE} element={<MoviePage setFilmId={setFilmId} />} />
             <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
+            <Route path={ROUTES.TICKETS} element={<TicketsPage />} />
             <Route
-              path={ROUTES.TICKETS}
+              path={ROUTES.PAYMENT_PROFILE}
+              element={<PaymentProfilePage setPerson={setPerson} />}
+            />
+            <Route
+              path={ROUTES.PAYMENT_CARD}
               element={
-                <TicketsPage
+                <PaymentCardPage
+                  filmId={filmId}
+                  person={person}
                   day={day}
                   time={time}
-                  setTime={setTime}
                   tickets={tickets}
-                  person={person}
-                  card={card}
-                  filmId={filmId}
-                  setToken={setToken}
                 />
               }
             />
-            <Route
-              path={ROUTES.PAYMENT_PROFILE}
-              element={<PaymentProfilePage setPerson={setPerson} token={token} />}
-            />
-            <Route path={ROUTES.PAYMENT_CARD} element={<PaymentCardPage setCard={setCard} />} />
             <Route
               path={ROUTES.SHEDULE}
               element={

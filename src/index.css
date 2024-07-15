@@ -451,6 +451,10 @@ button:disabled {
     background-color: #ecf9f2;
   }
 
+  .movie-ticket-payInfo-cancelled {
+    color: tomato;
+  }
+
   .movie-ticket-code {
     margin-left: 100px;
   }
